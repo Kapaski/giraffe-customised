@@ -233,10 +233,10 @@ refreshSummary = function(graph) {
   y_data = _.map(_.flatten(_.pluck(graph.graph.series, 'data')), function(d) {
     return d.y;
   });
-//    console.log(y_data)
+   // console.log(graph)
   var summaryFormatterName = graph.args.summaryFormatterName || "KMBT"
 
-  return $("" + graph.args.anchor + " .graph-summary").html(graph.args.summary+": "+graph.args.summary_formatter(summaryFormatterName,summary_func(y_data)));
+  return $("" + graph.args.anchor + " .graph-summary").html(graph.args.summary+": "+_formatterSwitcher(summaryFormatterName,summary_func(y_data)));
 
 };
 
@@ -248,6 +248,7 @@ graphScaffold = function() {
 */
 
     graph_template = "{{#dashboard_description}}\n    <div class=\"well\">{{{dashboard_description}}}</div>\n{{/dashboard_description}}\n" +
+
       //Visuals (gauges) div and svg
       "{{#gauges}}\n  {{#start_row}}\n "+
         "<div class=\"row-fluid gauges-group\">\n  <p></p>{{/start_row}}\n    " +
@@ -408,7 +409,7 @@ var graphScaffoldMulti = function(dashboards) {
         //Mustache lib here uses json data and template to generate from parent div to child
 
         $('#graphs').append(Mustache.render(graph_template, context));
-
+        console.log(gaugesHere)
         var graphsHere = [];
         for (i = _j = 0, _len1 = gaugesHere.length; _j < _len1; i = ++_j) {
             metric = gaugesHere[i];
@@ -422,8 +423,8 @@ var graphScaffoldMulti = function(dashboards) {
         }
 
     },this)
-    console.log(idx1)
-    console.log(idx2)
+//    console.log(idx1)
+//    console.log(idx2)
 };
 
 
@@ -436,7 +437,6 @@ init = function() {
     //console.log(dash.name)
     $('.dropdown-menu').append("<li><a href=\"#\">" + dash.name + "</a></li>");
   }
-  console.log(gauge_group)
   if(gauge_group != null && gauge_group != 'undefined') {
 
     graphScaffoldMulti(gauge_group);
@@ -447,6 +447,7 @@ init = function() {
 //    console.log(metrics)
 //    console.log(gauges)
   graphs = [];
+      console.log(gauges)
     for (i = _j = 0, _len1 = gauges.length; _j < _len1; i = ++_j) {
         metric = gauges[i];
         graphs.push(createGraph("#gauge-" + i, metric));
@@ -526,7 +527,7 @@ createGraph = function(anchor, metric) {
   if (graphite_url === 'demo') {
     graph_provider = Rickshaw.Graph.Demo;
 
-  } else if (metric.renderer === 'gauge'||metric.renderer === 'box') { //customised visualisations
+  } else if (metric.renderer === 'gauge'||metric.renderer === 'box'|| metric.renderer ==='tbox') { //customised visualisations
     graph_provider = Visuals.Graph.JSONP.Graphite;
     graph = getGaugeInstance(graph_provider, anchor, metric)
     //console.log(graph)
@@ -876,6 +877,7 @@ Visuals.Graph.JSONP.Graphite = Visuals.Class.create(Visuals.Graph.JSONP, {
             scheme: this.args.scheme
         });
         targets = this.args.target || this.args.targets;
+        //console.log(targets)
         d = _.map(d, function(el) {
             var color, _ref;
             if ((_ref = typeof targets) === "string" || _ref === "function") {
@@ -973,7 +975,7 @@ function getGaugeInstance(obj, anchor, metric) {
         alias:metric.alias,
         targets: metric.target || metric.targets,
         summary: metric.summary,
-        summary_formatter: metric.summary_formatter || _formatterSwitcher,
+        summary_formatter: metric.summary_formatter,
         summaryFormatterName : metric.summaryFormatterName,
         legendFormatterName : metric.lelegendFormatterName,
         yFormatterName : metric.yFormatterName,

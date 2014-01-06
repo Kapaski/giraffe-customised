@@ -972,6 +972,9 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
 
     render : function(series) {
         var curSeries = []
+        var formatterName = this.params.BoxFormatter || "none"
+        //console.log(formatterName)
+        var formatter = this._switchFormatter(formatterName)
         series.forEach(function(d){
                 var curValue,
                     curTime
@@ -983,10 +986,22 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
                         break;
                     }
                 }
+
+                if(formatterName==="none") {
+                    formatter = d3.format(".2r")
+                }
+                curValue = formatter(curValue)
+                //console.log(d.name)
                 var names= d.name.split(".")
                 var i = names.length-1<0?0:(names.length-1)
-                var name = names[i]
-                name = (name!=null? name.split(")").join("").split(",")[0]:"Read")
+
+                var name1 = names[i-1]
+                var name2 = names[i]//.replaceAll(")","")
+                //console.log(name)
+
+                var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
+                    +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
+                //console.log(name)
                 curTime = moment(moment.unix(curTime)).format("D MMM HH:mm")
                 var curObj = {
 
@@ -1003,10 +1018,127 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
         //console.log(id)
         if(!$(svgid).length>0) {
             this._box = this.boxFactory(this.params.size,id,curSeries);
+            $(svgid+' tr:eq(5)').style("display:none")
         } else {
-            var formatterName = this.params.Formatter || "none"
-            //console.log(formatterName)
-            var formatter = this._switchFormatter(formatterName)
+
+            this.updateBox(this._box,curSeries,formatter)
+        }
+
+    }
+});
+
+Visuals.namespace('Visuals.Graph.Renderer.TBox');
+Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
+
+    name: 'tbox',
+
+    _box :  {},
+
+    defaults:  function(){
+        return{
+            unstack: true,
+            fill: false,
+            stroke: true
+        }
+    },
+    seriesPathFactory: {},
+
+    _switchFormatter : function(formatterName) {
+        switch(formatterName) {
+            case "percent":
+                return this._percentFormatter;
+                break
+
+            default:
+                return this._noneFormatter;
+                break
+        }
+    },
+    _percentFormatter : function(d) {
+        if(d===null || d === 'undefined') return 0;
+        return (d*100).toFixed(2);
+
+    },
+
+    _noneFormatter : function(d) {
+        return d;
+    },
+
+
+    boxFactory : function(size, anchor, value){
+//        console.log(anchor)
+
+        var config =
+        {
+            size: size || 120,
+            value: undefined != value ? value : 0,
+            threshold: this.params.threshold || null,
+            height: this.params.height || null,
+            width: this.params.width || null
+
+        }
+
+        var box = new TBox(anchor, config);
+        box.render();
+        return box;
+    },
+
+    updateBox : function(box, series,formatter){
+        box.redraw(series,formatter)
+
+    },
+
+    render : function(series) {
+        var curSeries = []
+        var formatterName = this.params.BoxFormatter || "none"
+        //console.log(formatterName)
+        var formatter = this._switchFormatter(formatterName)
+        series.forEach(function(d){
+                var curValue,
+                    curTime
+                for(var k = (d.data.length-1); k>=0; k--) {
+                    curValue = d.data[k].y
+                    if(curValue!=null){
+                        curTime = d.data[k].x;
+
+                        break;
+                    }
+                }
+
+                if(formatterName==="none") {
+                    formatter = d3.format(".2r")
+                }
+                curValue = formatter(curValue)
+                //console.log(d.name)
+                var names= d.name.split(".")
+                var i = names.length-1<0?0:(names.length-1)
+
+                var name1 = names[i-1]
+                var name2 = names[i]//.replaceAll(")","")
+                //console.log(name)
+
+                var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
+                    +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
+                //console.log(name)
+                curTime = moment(moment.unix(curTime)).format("D MMM HH:mm")
+                var curObj = {
+
+                    name: name,
+                    time: curTime,
+                    value: curValue
+                }
+                curSeries.push(curObj)
+            }
+            ,this)
+
+        var id = "#box-"+this.params.anchor.replace("#","")
+        var svgid = "#box-"+id.replace("#","")
+        //console.log(id)
+        if(!$(svgid).length>0) {
+            this._box = this.boxFactory(this.params.size,id,curSeries);
+            $(svgid+' tr:eq(5)').style("display:none")
+        } else {
+
             this.updateBox(this._box,curSeries,formatter)
         }
 

@@ -2132,9 +2132,12 @@ Rickshaw.Graph.HoverDetail = Rickshaw.Class.create({
 		//return series.name + ':&nbsp;' + formattedY;
         var names= series.name.split(".")
         var i = names.length-1<0?0:(names.length-1)
-        var name = names[i]//.replaceAll(")","")
+        var name1 = names[i-1]
+        var name2 = names[i]//.replaceAll(")","")
         //console.log(name)
-        return name!=null? name.split(")").join("").split(",")[0] +'<br/>'+ formattedY:formattedY;
+        var name = //name1!=null&&name1!="*"?name1.split(")").join("").split(",")[0]+".":""+
+            name2.split(")").join("").split(",")[0]
+        return name  +'<br/>'+ formattedY;
 	},
 
 	update: function(e) {
