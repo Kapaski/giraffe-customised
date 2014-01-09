@@ -12,9 +12,9 @@ function Gauge(placeholderName, configuration)
     {
         this.config = configuration;
         //console.log(configuration)
-        this.config.size = this.config.size * 0.9;
+        this.config.size = this.config.size;
 
-        this.config.raduis = this.config.size * 0.97 / 2;
+        this.config.raduis = Math.ceil(this.config.size * 0.97 / 2);
         this.config.cx = this.config.size / 2;
         this.config.cy = this.config.size / 2;
 
@@ -29,17 +29,21 @@ function Gauge(placeholderName, configuration)
         this.config.yellowColor = configuration.yellowColor || "#FF9900";
         this.config.redColor 	= configuration.redColor || "#DC3912";
         this.config.threshold = configuration.threshold
-        this.config.transitionDuration = configuration.transitionDuration || 500;
+        this.config.transitionDuration = configuration.transitionDuration || 600;
     }
-
+    this.body = d3.select(this.placeholderName)
+    this.face = this.body.select(this.placeholderName+"-gaugeface")
+    //console.log(this.body)
     this.render = function()
     {
-        this.body = d3.select(this.placeholderName)
-            .append("svg:svg")
+
+            this.body = d3.select(this.placeholderName)
+                .append("svg:svg")
             .attr("class", "gauges")
             .attr("id", "gauge-"+this.placeholderName.replace("#",""))
             .attr("width", this.config.size)
-            .attr("height", this.config.size);
+            .attr("height", this.config.size)
+            .attr("dy","5px")
 
 
         this.body.append("svg:circle")
@@ -51,6 +55,7 @@ function Gauge(placeholderName, configuration)
             .style("stroke-width", "0.5px");
 
         this.face = this.body.append("svg:circle")
+            .attr("id",this.placeholderName+"-gaugeface")
             .attr("cx", this.config.cx)
             .attr("cy", this.config.cy)
             .attr("r", 0.9 * this.config.raduis)

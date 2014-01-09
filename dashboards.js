@@ -1,7 +1,30 @@
-var graphite_url = "http://localhost:8888";  // enter your graphite url, e.g. http://your.graphite.com
-var tarprefix1 = "servers.localhost_22001.serverLocal"
-var tarprefix2 = "servers.localhost_22002.serverLocal"
-var tarprefix3 = "servers.localhost_host.serverLocal"
+/*
+ Brief summary of dashboard.js configuration:
+
+ [Gauges]
+ This section is for ONE value display.
+ Different 'renderer' types have their own mandatory attributes
+
+ gauge:
+ size | color zone | factor | threshold | formatter
+ tbox:
+ size | formatter | valueName | valueUom
+
+
+ [Metrics]
+ This section is for a series of values according to time series display
+ Different 'renderer' types have their own mandatory attributes
+
+ line | area | bar :
+ colspan | yFormatter | summaryFormatter |
+
+
+ */
+
+var graphite_url = "http://10.20.19.83:8888";  // enter your graphite url, e.g. http://your.graphite.com
+var tarprefix1 = "servers.127_0_0_1.22001.serverLocal"
+var tarprefix2 = "servers.10_20_19_83.22002.serverLocal"
+var tarprefix3 = "servers.10_20_19_83.host.serverLocal"
 
 
 var dashboards =
@@ -12,7 +35,7 @@ var dashboards =
                 {   "description": "\n####System health metrics dev-2008-mule01" //Use description here as sub-dashboard title
                         + "\n___",
                     "refresh": 10000,
-                    "scheme": "spectrum2001",
+                    "scheme": "spectrum2001",//check giraffe github doc for more scheme intro
                     "gauges" :
                         [
                             {
@@ -36,7 +59,7 @@ var dashboards =
                                 "redZones":[{from:0,to:10}],
                                 "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
-                            },
+                            }
 //                            {
 //                                "alias": "",  // display name for this metric
 //                                "targets": [""+tarprefix3+".Disk.LogicalDisk.*",
@@ -70,16 +93,16 @@ var dashboards =
                                 "targets": ""+tarprefix2+".mule.os.systemcpuload",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
-                                "height": 120, //currently for gauge only
+                                "height": 200, //currently for gauge only
                                 "width":100,
                                 //"Formatter":"percent"
                             },
                             {
                                 "alias": "%  Mule heap memory used",  // display name for this metric
-                                "target": "divideSeries("+tarprefix2+".mule.heap.HeapMemoryUsage_used,"+tarprefix2+".mule.heap.HeapMemoryUsage_init)",  // enter your graphite barebone target expression here
+                                "target": "divideSeries("+tarprefix2+".mule.heap.HeapMemoryUsage.used,"+tarprefix2+".mule.heap.HeapMemoryUsage_init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
-                                "size": 120, //currently for gauge only
+                                "size": 200, //currently for gauge only
                                 "width":100,
                                 "Formatter":"percent"
                             },
@@ -109,24 +132,34 @@ var dashboards =
                     "gauges" :
                         [
                             {
-                                "alias": "% ActiveMQ CPU load",  // display name for this metric
-                                "target": ""+tarprefix1+".ActiveMQ.os.systemcpuload",  // enter your graphite barebone target expression here
+                                "alias": "% ActiveMQ Mem Usage",  // display name for this metric
+                                "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
                                 "size": 120, //currently for gauge only
-                                "width":200
-                                //"Formatter":"percent"
+                                "width":200,
+                                "Formatter":"percent"
 
                             },
                             {
-                                "alias": "%  ActiveMQ heap memory used",  // display name for this metric
-                                "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_init)",  // enter your graphite barebone target expression here
+                                "alias": "%  ActiveMQ test sample",  // display name for this metric,not applicable for box and tbox
+                                "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
+                                "description": "",  // enter your metric description here
+                                "renderer": "tbox",
+                                //tobx normally requires and valueUom is not null but valueName could be null
+                                "valueName" :"",
+                                "valueUom":"%",
+                                "size": 120, //currently for gauge only
+                                "Formatter":"percent"
+                            },
+                            {
+                                "alias": "%  ActiveMQ test sample",  // display name for this metric,not applicable for box and tbox
+                                "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 120, //currently for gauge only
-                                "width":280,
-                                "Formatter":"percent"
-                            },
+                                "Formatter":".2r"
+                            }
 
 
 
@@ -138,7 +171,7 @@ var dashboards =
                             "alias": "",  // display name for this metric
                             "target": tarprefix1+".ActiveMQ.queues_total.*",  // enter your graphite barebone target expression here
                             "description": "",  // enter your metric description here
-                            "renderer": "box",
+                            "renderer": "line",
                             "size": 120, //currently for gauge only
                             "width":120,
                             "Formatter":"percent"
@@ -149,7 +182,7 @@ var dashboards =
                             "alias": "",  // display name for this metric
                             "target": "scaleToSeconds(derivative("+tarprefix1+".ActiveMQ.queues_total.*),60)",  // enter your graphite barebone target expression here
                             "description": "",  // enter your metric description here
-                            "renderer": "box",
+                            "renderer": "line",
                             "size": 120, //currently for gauge only
                             "width":120,
                             "Formatter":"percent"
@@ -386,21 +419,24 @@ var dashboards =
                 [
                     {
                         "alias": "%  ActiveMQ heap memory used",  // display name for this metric
-                        "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_init)",  // enter your graphite barebone target expression here
+                        "target": "averageSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used)",  // enter your graphite barebone target expression here
                         "description": "",  // enter your metric description here
-                        "renderer": "gauge",
+                        "renderer": "tbox",
+                        "Formatter" : "KMGTP",
+                        "valueName":"",
+                        "valueUom" :" used",
                         "size": 150, //currently for gauge only
-                        "width":280,
-                        "Formatter":"percent"
+                        "width":280
+
                     },
                     {
                         "alias": "% ActiveMQ Thread used",  // display name for this metric
-                        "target": "divideSeries("+tarprefix1+".ActiveMQ.threads.ThreadCount,"+tarprefix1+".ActiveMQ.threads.PeakThreadCount)",  // enter your graphite barebone target expression here
+                        "target": "averageSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used)",  // enter your graphite barebone target expression here
                         "description": "",  // enter your metric description here
                         "renderer": "gauge",
                         "size": 150, //currently for gauge only
                         "width":200,
-                        "Formatter":"percent"
+                        "Formatter":""
 
                     }
 
@@ -445,7 +481,7 @@ var dashboards =
                             ""+tarprefix1+".ActiveMQ.threads.DaemonThreadCount"
                         ],  // enter your graphite barebone target expression here
                         "description": "The diagram indicates ActiveMQ threads usages", // enter your metric description here
-                        "renderer": "bar",
+                        "renderer": "line",
 
                         "height" : 200,
                         "colspan" : 1,
@@ -454,10 +490,10 @@ var dashboards =
                         "yFormatterName" : "KMBT"
                     },
                     {
-                        "alias": "10_5_250_91.jvm.memory",  // display name for this metric
-                        "targets": [""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_init",
-                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_used",
-                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage_committed"
+                        "alias": "10_20_19_83.jvm.memory",  // display name for this metric
+                        "targets": [""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init",
+                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used",
+                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.committed"
                         ],  // enter your graphite barebone target expression here
 
                         "description": "", // enter your metric description here
@@ -506,3 +542,5 @@ function entire_period() {
 function at_least_a_day() {
     return entire_period() >= 1440 ? entire_period() : 1440;
 }
+
+

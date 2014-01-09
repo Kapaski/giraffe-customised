@@ -393,7 +393,7 @@ Visuals.Graph = function(args) {
     this.params = args;
     this.element = args.element;
     this.series = args.series;
-
+    this.graphklass = undefined;
     this.defaults = {
         interpolation: 'cardinal',
         offset: 'zero',
@@ -663,7 +663,6 @@ Visuals.Graph.Ajax = Visuals.Class.create( {
         data = this.onData(data);
 
         this.args.series = this._splice({ data: data, series: this.args.series });
-
         this.graph = this.graph || new Visuals.Graph(this.args);
         this.graph.render();
 
@@ -721,9 +720,9 @@ Visuals.Graph.Renderer = Visuals.Class.create( {
 
     params:{},
     initialize: function(args) {
+//        console.log("visuals.js render constructor")
         this.graph = args.graph;
-        this.configure(args);
-
+        this.params = this.graph.params
     },
 
     seriesPathFactory: function() {
@@ -751,13 +750,14 @@ Visuals.Graph.Renderer = Visuals.Class.create( {
 
     render: function(args) {
         //console.log(args)
+
     },
 
     _styleSeries: function(series) {
      },
 
     configure: function(args) {
-        this.params = args
+//        this.params = args.params
 //        args = args || {};
 //
 //        Visuals.keys(this.defaults()).forEach( function(key) {
@@ -808,7 +808,6 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
 
     name: 'gauge',
 
-    _gauge :  {},
 
     defaults:  function(){
            return{
@@ -824,7 +823,18 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
             case "percent":
                 return this._percentFormatter;
                 break
-
+            case ".2r" :
+                return this._roundFormatter(".2r")
+                break
+            case "KMGTP":
+                return _formatBase1024KMGTP;
+                break
+            case "MGTP":
+                return _formatBase1024MGTP;
+                break
+            case "KMBT":
+                return _formatBase1000KMBT;
+                break
             default:
                 return this._noneFormatter;
                 break
@@ -835,21 +845,21 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
         return (d*100).toFixed(2);
 
     },
-
+    _roundFormatter: function(str) {
+        return d3.format(str)
+    },
     _noneFormatter : function(d) {
         return d;
     },
 
 
-    gaugeFactory : function(size, anchor, label, min, max){
-        //console.log(anchor)
-
+    gaugeFactory : function(size, anchor, label){
         var config =
         {
             size: size || 120,
             label: label,
-            min: undefined != min ? min : 0,
-            max: undefined != max ? max : 100,
+            min: this.params.min ? this.params.min : 0,
+            max: this.params.max ? this.params.max : 100,
             minorTicks: 5,
             majorTicks:10
 
@@ -862,12 +872,24 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
         config.redZones = this.params.redZones || [{ from: config.min + range*0.9, to: config.max }];
 
         var gauge = new Gauge(anchor, config);
-        gauge.render();
-        return gauge;
+        //console.log(svgid)
+        var svgid = "#gauge-"+anchor.replace("#","")
+        if(!$(svgid).length>0) {
+            //console.log("create gauge")
+            gauge.render()
+            this.updateGauges(gauge)
+        } else {
+            console.log("update gauge")
+            this.updateGauges(gauge)
+        }
+
     },
 
-    updateGauges : function(gauge, series,formatter){
+    updateGauges : function(gauge){
+            var formatterName = this.params.Formatter || "none"
+            var formatter = this._switchFormatter(formatterName)
 
+            var series = this.params.series
             var value;
             for(var k = (series[0].data.length-1); k>=0; k--) {
                 value = series[0].data[k].y
@@ -877,7 +899,7 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
 
                 }
             }
-            //console.log(gauge)
+            console.log(value)
 
             if (value!=null) {
                 var v = formatter(value)
@@ -887,26 +909,135 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
 
     },
 
+
     render : function(series) {
-
-
         var id = "#gauge-"+this.params.anchor.replace("#","")
-        var svgid = "#gauge-"+id.replace("#","")
-        //console.log(svgid)
-        if(!$(svgid).length>0) {
-            this._gauge = this.gaugeFactory(this.params.size,id,this.params.alias);
-        } else {
-            var formatterName = this.params.Formatter || "none"
-            //console.log(formatterName)
-            var formatter = this._switchFormatter(formatterName)
-            this.updateGauges(this._gauge,series,formatter)
+        this.gaugeFactory(this.params.size,id,this.params.alias);
+
+    }
+});
+
+Visuals.namespace('Visuals.Graph.Renderer.TBox');
+Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
+
+    name: 'tbox',
+
+
+    defaults:  function(){
+        return{
+            unstack: true,
+            fill: false,
+            stroke: true
         }
+    },
+    seriesPathFactory: {},
+
+    _switchFormatter : function(formatterName) {
+        switch(formatterName) {
+            case "percent":
+                return this._percentFormatter;
+                break
+            case ".2r":
+                return this._roundFormatter(".2r")
+                break
+            case "KMGTP":
+                return _formatBase1024KMGTP;
+                break
+            case "MGTP":
+                return _formatBase1024MGTP;
+                break
+            case "KMBT":
+                return _formatBase1000KMBT;
+                break
+            default:
+                return this._noneFormatter;
+                break
+        }
+    },
+    _percentFormatter : function(d) {
+        if(d===null || d === 'undefined') return 0;
+        return (d*100).toFixed(2);
+
+    },
+    _roundFormatter: function(str) {
+        console.log("using str f")
+        return d3.format(str)
+    },
+    _noneFormatter : function(d) {
+        return d;
+    },
+
+
+    tboxFactory : function(size, anchor, value){
+       var config =
+        {
+            size: size || 120,
+            value: undefined != value ? value : 0,
+            threshold: this.params.threshold || null,
+            height: this.params.height || null,
+            width: this.params.width || 200
+
+        }
+
+        var tbox = new TBox(anchor, config);
+
+        var svgid = "#tbox-"+anchor.replace("#","")
+        if(!$(svgid).length>0) {
+            tbox.render();
+        } else {
+            this.updateTBox(tbox,value)
+        }
+
+
+
+    },
+
+    updateTBox : function(tbox, curSeries){
+        console.log("update Tbox")
+        console.log(curSeries[0].value)
+        tbox.redraw(curSeries)
+
+    },
+
+    render : function(series) {
+        var curSeries = []
+        var formatterName = this.params.Formatter || "none"
+        var formatter = this._switchFormatter(formatterName)
+        series.forEach(function(d){
+                var curValue,
+                    curTime
+                for(var k = (d.data.length-1); k>=0; k--) {
+                    curValue = d.data[k].y
+                    if(curValue!=null){
+                        curTime = d.data[k].x;
+
+                        break;
+                    }
+                }
+
+                if(formatter===undefined) {
+                    formatter = d3.format(".8r")
+                }
+                curValue = formatter(curValue)
+                var name = this.params.valueName || "";
+                var uom = this.params.valueUom || ""
+                var curObj = {
+                    name: name,
+                    uom: uom,
+                    value: curValue
+                }
+                curSeries.push(curObj)
+            }
+            ,this)
+        var id = "#tbox-"+this.params.anchor.replace("#","")
+        this._box = this.tboxFactory(this.params.size,id,curSeries);
+
 
     }
 });
 
 /*
- * Todo: Add a new visualisation that is made of Text box with value in type of metrics.gauge
+ * Todo: Box display currently is not recommended to use, yet to polish its style
  * display both value and timestamp
  */
 Visuals.namespace('Visuals.Graph.Renderer.Box');
@@ -971,6 +1102,8 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
     },
 
     render : function(series) {
+        console.log("box render gets called")
+
         var curSeries = []
         var formatterName = this.params.BoxFormatter || "none"
         //console.log(formatterName)
@@ -1027,120 +1160,3 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
     }
 });
 
-Visuals.namespace('Visuals.Graph.Renderer.TBox');
-Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
-
-    name: 'tbox',
-
-    _box :  {},
-
-    defaults:  function(){
-        return{
-            unstack: true,
-            fill: false,
-            stroke: true
-        }
-    },
-    seriesPathFactory: {},
-
-    _switchFormatter : function(formatterName) {
-        switch(formatterName) {
-            case "percent":
-                return this._percentFormatter;
-                break
-
-            default:
-                return this._noneFormatter;
-                break
-        }
-    },
-    _percentFormatter : function(d) {
-        if(d===null || d === 'undefined') return 0;
-        return (d*100).toFixed(2);
-
-    },
-
-    _noneFormatter : function(d) {
-        return d;
-    },
-
-
-    boxFactory : function(size, anchor, value){
-//        console.log(anchor)
-
-        var config =
-        {
-            size: size || 120,
-            value: undefined != value ? value : 0,
-            threshold: this.params.threshold || null,
-            height: this.params.height || null,
-            width: this.params.width || null
-
-        }
-
-        var box = new TBox(anchor, config);
-        box.render();
-        return box;
-    },
-
-    updateBox : function(box, series,formatter){
-        box.redraw(series,formatter)
-
-    },
-
-    render : function(series) {
-        var curSeries = []
-        var formatterName = this.params.BoxFormatter || "none"
-        //console.log(formatterName)
-        var formatter = this._switchFormatter(formatterName)
-        series.forEach(function(d){
-                var curValue,
-                    curTime
-                for(var k = (d.data.length-1); k>=0; k--) {
-                    curValue = d.data[k].y
-                    if(curValue!=null){
-                        curTime = d.data[k].x;
-
-                        break;
-                    }
-                }
-
-                if(formatterName==="none") {
-                    formatter = d3.format(".2r")
-                }
-                curValue = formatter(curValue)
-                //console.log(d.name)
-                var names= d.name.split(".")
-                var i = names.length-1<0?0:(names.length-1)
-
-                var name1 = names[i-1]
-                var name2 = names[i]//.replaceAll(")","")
-                //console.log(name)
-
-                var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
-                    +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
-                //console.log(name)
-                curTime = moment(moment.unix(curTime)).format("D MMM HH:mm")
-                var curObj = {
-
-                    name: name,
-                    time: curTime,
-                    value: curValue
-                }
-                curSeries.push(curObj)
-            }
-            ,this)
-
-        var id = "#box-"+this.params.anchor.replace("#","")
-        var svgid = "#box-"+id.replace("#","")
-        //console.log(id)
-        if(!$(svgid).length>0) {
-            this._box = this.boxFactory(this.params.size,id,curSeries);
-            $(svgid+' tr:eq(5)').style("display:none")
-        } else {
-
-            this.updateBox(this._box,curSeries,formatter)
-        }
-
-    }
-});
