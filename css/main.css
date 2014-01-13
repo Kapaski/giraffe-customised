@@ -36,7 +36,9 @@ body > .container {
   color: #537fd6;
   text-shadow: none;
 }
-
+.navbar .btn-link {
+  color: #537fd6;
+}
 .navbar .brand:hover {
   text-decoration: none;
   color: #d65100;

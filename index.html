@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <div class="brand">Panviva Demo</div>
+                    <div class="brand"><a class="btn-link" href="#">Panviva Demo</a></div>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="dropdown">
@@ -52,9 +52,10 @@
                                 <a class="btn btn-small range" data-timeframe="480" href="#8h">8h</a>
                                 <a class="btn btn-small range" data-timeframe="1440" href="#1d">1d</a>
                                 <a class="btn btn-small range" data-timeframe="4320" href="#3d">3d</a>
+                                <a class="btn btn-small range" data-timeframe="7200" href="#5d">5d</a>
                                 <a class="btn btn-small range" data-timeframe="10080" href="#1w">1w</a>
-                                <a class="btn btn-small range" data-timeframe="20160" href="#2w">2w</a>
-                                <a class="btn btn-small range" data-timeframe="40320" href="#4w">4w</a>
+                                <!--<a class="btn btn-small range" data-timeframe="20160" href="#2w">2w</a>-->
+                                <!--<a class="btn btn-small range" data-timeframe="40320" href="#4w">4w</a>-->
                                 <!--<a class="btn btn-small range" data-timeframe="70560" href="#7w">7w</a>-->
                             </div>
                             <a id="legend-toggle" class="btn btn-small toggle" title="legend" href="#"><i class="icon-list-alt"></i></a>
@@ -69,15 +70,16 @@
                 </div>
             </div>
         </div>
-        <div>
-            <p id="mem"></p>
-        </div>
+
         <div class="container">
             <div class="dashboard-content">
                 <div class="page-header"><h1></h1></div>
+                <div id="serverlist" style="padding-bottom: 10px"></div>
+
                 <div id="graphs"></div>
             </div>
         </div> <!-- /container -->
+
 
 
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
@@ -102,7 +104,10 @@
         <script src="js/gauge.js"></script>
         <script src="js/extra-d3.js"></script>
         <script src="js/Visuals.js"></script>
+
+        <script src="serverlist.js"></script>
         <script src="dashboards.js"></script>
+
         <script src="js/giraffe-annotator.js"></script>
         <script src="js/giraffe.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.fittext.js"></script>

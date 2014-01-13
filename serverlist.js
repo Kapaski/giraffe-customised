@@ -9,18 +9,19 @@
  *  Servers are grouped mapping to dashboard pages, add them carefully also make sure url
  *  is correct or the query sent to Graphite will return wrong data
  *
+ *  Every first server info in array will be default to display when page starts
  *
  */
 
 
-var servers = [
+var serverdropdownlist = [
 
     {
         type:"WebTier",
         servers:[
             {
                 name:"IIS01",
-                address:"10.2.250.1"
+                address:"127.0.0.1"
 
             },
             {
@@ -30,7 +31,7 @@ var servers = [
             },
             {
                 name:"IIS03",
-                address:"10.2.250.12"
+                address:"127.0.0.1"
 
             }
         ]
@@ -40,7 +41,7 @@ var servers = [
         servers:[
             {
                 name:"IOL1",
-                address:"10.2.250.2"
+                address:"127.0.0.1"
 
             }
         ]
@@ -49,8 +50,14 @@ var servers = [
         type:"ESB",
         servers:[
             {
+                name: "Mule00",
+                address:"127.0.0.1",
+                port:"22001"
+            },
+            {
                 name:"Mule01",
-                address:"10.2.250.3"
+                address:"10.2.250.3",
+                port:"21002"
 
             }
         ]
@@ -59,8 +66,26 @@ var servers = [
         type:"MQ",
         servers:[
             {
+                name: "Amq00",
+                address:"127.0.0.1",
+                port:"22001"
+            },
+            {
                 name:"Amq01",
-                address:"10.2.250.4"
+                address:"10.20.1.9",
+                port:"21001"
+
+            },
+            {
+                name:"Amq02",
+                address:"127.0.0.1",
+                port:"21001"
+
+            },
+            {
+                name:"Amq03",
+                address:"192.168.1.8",
+                port:"21001"
 
             }
         ]
@@ -70,7 +95,7 @@ var servers = [
         servers:[
             {
                 name:"App1",
-                address:"10.2.250.5"
+                address:"127.0.0.1"
 
             }
         ]
@@ -80,7 +105,7 @@ var servers = [
         servers:[
             {
                 name:"DB01",
-                address:"10.2.250.6"
+                address:"127.0.0.1"
 
             }
         ]

@@ -75,7 +75,6 @@ SOFTWARE.
 /* ------------------------------------ */
 /* Import from object.js                */
 /* ------------------------------------ */
-    console.log(globalContext)
 var _toString = Object.prototype.toString,
     NULL_TYPE = 'Null',
     UNDEFINED_TYPE = 'Undefined',

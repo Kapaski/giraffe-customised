@@ -632,7 +632,7 @@ Visuals.Graph.Ajax = Visuals.Class.create( {
     initialize: function(args) {
 
         this.dataURL = args.dataURL;
-        console.log(this.dataURL)
+        //console.log(this.dataURL)
         this.onData = args.onData || function(d) { return d };
         this.onComplete = args.onComplete || function() {};
         this.onError = args.onError || function() {};
@@ -879,7 +879,6 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
             gauge.render()
             this.updateGauges(gauge)
         } else {
-            console.log("update gauge")
             this.updateGauges(gauge)
         }
 
@@ -899,7 +898,7 @@ Visuals.Graph.Renderer.Gauge = Visuals.Class.create( Visuals.Graph.Renderer, {
 
                 }
             }
-            console.log(value)
+            //console.log(value)
 
             if (value!=null) {
                 var v = formatter(value)
@@ -940,6 +939,12 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
             case ".2r":
                 return this._roundFormatter(".2r")
                 break
+            case "r":
+                return this._roundFormatter("r")
+                break
+            case "rKMBT":
+                return this._formatRKMBT;
+                break
             case "KMGTP":
                 return _formatBase1024KMGTP;
                 break
@@ -966,7 +971,11 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
     _noneFormatter : function(d) {
         return d;
     },
-
+    _formatRKMBT : function(d) {
+        var r = _formatBase1000KMBT(d)
+        var f = d3.format("f")
+        return f(r)
+    },
 
     tboxFactory : function(size, anchor, value){
        var config =
@@ -993,8 +1002,6 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
     },
 
     updateTBox : function(tbox, curSeries){
-        console.log("update Tbox")
-        console.log(curSeries[0].value)
         tbox.redraw(curSeries)
 
     },
@@ -1037,15 +1044,18 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
 });
 
 /*
- * Todo: Box display currently is not recommended to use, yet to polish its style
+ * Todo: Box display currently is not recommended to use:
+ * known limitation is graphite render url MUST have an attribute name as its end
+ *  eg:
+ *  good: ..server.queuelength
+ *  bad: ..server.*
+ *
  * display both value and timestamp
  */
 Visuals.namespace('Visuals.Graph.Renderer.Box');
 Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
 
     name: 'box',
-
-    _box :  {},
 
     defaults:  function(){
         return{
@@ -1061,7 +1071,24 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
             case "percent":
                 return this._percentFormatter;
                 break
-
+            case ".2r":
+                return this._roundFormatter(".2r")
+                break
+            case "r":
+                return this._roundFormatter("r")
+                break
+            case "KMGTP":
+                return _formatBase1024KMGTP;
+                break
+            case "MGTP":
+                return _formatBase1024MGTP;
+                break
+            case "rKMBT":
+                return this._formatRKMBT;
+                break
+            case "KMBT":
+                return _formatBase1000KMBT;
+                break
             default:
                 return this._noneFormatter;
                 break
@@ -1072,90 +1099,104 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
         return (d*100).toFixed(2);
 
     },
-
+    _roundFormatter: function(str) {
+        return d3.format(str)
+    },
     _noneFormatter : function(d) {
         return d;
     },
-
-
-    boxFactory : function(size, anchor, value){
-//        console.log(anchor)
-
-        var config =
-        {
-            size: size || 120,
-            value: undefined != value ? value : 0,
-            threshold: this.params.threshold || null,
-            height: this.params.height || null,
-            width: this.params.width || null
-
-        }
-
-        var box = new Box(anchor, config);
-        box.render();
-        return box;
+    _formatRKMBT : function(d) {
+      var r = _formatBase1000KMBT(d)
+      var f = d3.format("f")
+      return f(r)
     },
 
-    updateBox : function(box, series,formatter){
-        box.redraw(series,formatter)
+    boxFactory : function(size, anchor, series){
+//        console.log(anchor)
+
+        var value = []
+        var formatterName = this.params.Formatter || "none"
+        //console.log(formatterName)
+        var formatter = this._switchFormatter(formatterName)
+        //console.log("update box", series)
+        series.forEach(function(d){
+
+/*
+ * Currently Box renderer only doing Average OR Max value calculation through Underscore.js
+*/
+
+        //Average
+//        var arr = _.pluck(d.data,"y");
+//        var m = _.reduce(arr, function(memo, num)
+//        {
+//            return num!==null?memo + num:memo;
+//        }, 0) / arr.length
+
+        //Max
+        var m= _.max(_.pluck(d.data, "y"))
+
+        //console.log("underscore: "+m)
+
+
+        m = formatter(m)
+
+        var names= d.name.split(".")
+        var i = names.length-1<0?0:(names.length-1)
+
+        var name1 = names[i-1]
+        var name2 = names[i]
+
+        var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
+            +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
+
+        var curObj = {
+
+            name: name,
+            value: m
+        }
+        value.push(curObj)
+    }
+    ,this)
+
+
+    var config =
+    {
+        size: size || 120,
+        value: undefined != value ? value : 0,
+        threshold: this.params.threshold || undefined,
+        height: this.params.height || undefined,
+        width: this.params.width || undefined
+
+    }
+
+    var box = new Box(anchor, config);
+
+    var svgid = "#box-"+anchor.replace("#","")
+    if(!$(svgid).length>0) {
+        box.render();
+    } else {
+
+        this.updateBox(box,value)
+    }
+
+
+    return box;
+    },
+
+    updateBox : function(box, value){
+        box.redraw(value)
 
     },
 
     render : function(series) {
-        console.log("box render gets called")
 
-        var curSeries = []
-        var formatterName = this.params.BoxFormatter || "none"
-        //console.log(formatterName)
-        var formatter = this._switchFormatter(formatterName)
-        series.forEach(function(d){
-                var curValue,
-                    curTime
-                for(var k = (d.data.length-1); k>=0; k--) {
-                    curValue = d.data[k].y
-                    if(curValue!=null){
-                        curTime = d.data[k].x;
 
-                        break;
-                    }
-                }
+            var id = "#box-"+this.params.anchor.replace("#","")
+            var svgid = "#box-"+id.replace("#","")
 
-                if(formatterName==="none") {
-                    formatter = d3.format(".2r")
-                }
-                curValue = formatter(curValue)
-                //console.log(d.name)
-                var names= d.name.split(".")
-                var i = names.length-1<0?0:(names.length-1)
+            this.boxFactory(this.params.size,id,series);
+            //$(svgid+' tr:eq(5)').style("display:none")
 
-                var name1 = names[i-1]
-                var name2 = names[i]//.replaceAll(")","")
-                //console.log(name)
-
-                var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
-                    +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
-                //console.log(name)
-                curTime = moment(moment.unix(curTime)).format("D MMM HH:mm")
-                var curObj = {
-
-                    name: name,
-                    time: curTime,
-                    value: curValue
-                }
-                curSeries.push(curObj)
-            }
-        ,this)
-
-        var id = "#box-"+this.params.anchor.replace("#","")
-        var svgid = "#box-"+id.replace("#","")
-        //console.log(id)
-        if(!$(svgid).length>0) {
-            this._box = this.boxFactory(this.params.size,id,curSeries);
-            $(svgid+' tr:eq(5)').style("display:none")
-        } else {
-
-            this.updateBox(this._box,curSeries,formatter)
-        }
 
     }
 });
