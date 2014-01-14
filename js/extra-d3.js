@@ -16,8 +16,8 @@ function TBox(placeholderName, configuration) {
         this.config.formatter = configuration.formatter;
         this.config.width = configuration.width;
         this.config.value = configuration.value;
-
-        this.config.threshold = configuration.threshold
+        this.config.rawvalue = configuration.rawvalue;
+        this.config.threshold = configuration.threshold || {value:50,factor:"lt"}
         this.config.transitionDuration = configuration.transitionDuration || 500;
 
     }
@@ -25,18 +25,16 @@ function TBox(placeholderName, configuration) {
 
     this.render = function () {
         var h = this.config.s
-
-
+        var w = this.config.s
         var json = this.config.value
         var data = json[0] || {name:"",value:"",uom:""}
-        var color = d3.interpolateRgb("rgb(0,255,0)", "rgb(255,0,0)");
-
-
+        var anchor = "tbox-"+this.placeholderName.replace("#","");
         var tboxholder = d3.select(this.placeholderName).append("div")
-            .attr("id", "tbox-"+this.placeholderName.replace("#",""))
-            .attr("class","tbox-holder fittext")
+            .attr("id", anchor)
+            .attr("class","tbox-holder")
             .style("position", "relative")
             .style("height",h+"px")
+            .style("width",h/0.618+"px")
 
         tboxholder.append("div")
             .attr("id","")
@@ -57,6 +55,32 @@ function TBox(placeholderName, configuration) {
             .text(function(d){
                 return data['uom'] || ""
             })
+
+        var over = false
+//        var r = /[\s\S]$/ // /^(-?[0-9]+)[^0-9\.]*([0-9]*).*$/g
+//        var v = parseInt(data.value.replace(r,""))
+        var v = this.config.rawvalue;
+        if(this.config.factor === "no") {
+            over = false
+        }else if(this.config.threshold.factor==="lt") {
+            if(v <= this.config.threshold.value) {
+                over = true;
+            }
+        }else {
+            if(v >=this.config.threshold.value) {
+                over = true;
+            }
+        }
+
+       // console.log("compare ",this.config.rawvalue," ",this.config.threshold.value," as ",this.config.threshold.factor," ",over)
+
+        if(over) {
+            d3.select('#'+anchor).style("background-color", "#d68170")
+         }else {
+
+        }
+
+
 
 
     }

@@ -7,11 +7,13 @@
 
  gauge:
     size |
-    (optional): color zone | factor | threshold | formatter
-
+    (optional): yellowZones|redZones {from:v , to:v}
+    | factor  | formatter
+    threshold {value: [normally 0~100], factor [lt | gt]}
  tbox:
     size | formatter | valueName | valueUom |
     (optional): color zone | threshold | factor
+    threshold {value: [actual graphite stored value], factor [lt | gt]}
 
  box: (not recommended to use other than value rankings - /render?highestMax()
     overridePeriod (hardcode a lookback timeframe other than using page timepanel)|
@@ -24,6 +26,9 @@
  line | area | bar :
  colspan | yFormatter | summaryFormatter |
 
+
+ ** [formatters]
+ * "KMBT" "MGBT" "KMGBT" "percent"
 
  */
 
@@ -39,7 +44,7 @@ var tarprefix_2 = "servers.*.22001"
 
 var tarprefix1 = "servers.(1)"
 var tarprefix2 = "servers.(1)"
-
+var timeframe = "(2)"
 
 var dashboards =
     [
@@ -76,7 +81,8 @@ var dashboards =
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
                                 "valueName":"Network sent and received traffic",
-                                "valueUom" :"/sec"
+                                "valueUom" :"/sec",
+                                "threshold": {value:1024*1024,factor:"lt"}
                             },
                             {
                                 "alias": "Avg Network Bandwidth", // display name for this metric
@@ -301,12 +307,12 @@ var dashboards =
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // enter your graphite barebone target expression here
                     "description": "",  // enter your metric description here
                     "renderer": "gauge",
-                    "size": 210,
+                    "size": 150,
                     "Formatter":"none",
-                    "colspan" : 1
+                    "colspan" : 0.5,
 //                        "yellowZones":[{from:10,to:20}],
 //                        "redZones":[{from:0,to:10}],
-//                        "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                   "threshold":{value:80,factor:"gt"} //factor lt = less than or equal to, gt = greater than or equal to
                 },
                 {
                     "alias": "% Avg Processor Usage Over Time",
@@ -318,7 +324,7 @@ var dashboards =
                     "stroke_width": 1 , // change stroke width
                     "height" : 200,
                     "renderer": "line",
-                    "colspan" : 2
+                    "colspan" : 2.5
 
                 },
                 {
@@ -327,15 +333,14 @@ var dashboards =
                     // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "size" : 210,
+                    "description":"Average available memory during given timeframe",
+                    "size" : 195,
                     "renderer":"tbox",
-                    "colspan" : 1,
+                    "colspan" : 0.5,
                     "valueName":"",
                     "valueUom":"",
-                    "Formatter":"MGTP"
-//                    "yellowZones":[{from:10,to:20}],
-//                    "redZones":[{from:0,to:10}],
-//                    "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                    "Formatter":"MGTP",
+                    "threshold":{value:1024*1024*3,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
                 },
                 {
@@ -354,7 +359,7 @@ var dashboards =
                     "renderer": "line",
                     "description": "If it is low, then the system is likely running out of memory",
                     "interpolation": "linear",
-                    "colspan": 2,
+                    "colspan": 2.5,
                     "yFormatterName":"MGTP",
                     "height" : 200
                 },
@@ -480,7 +485,7 @@ var dashboards =
         },
 
         { "name": "ESB Metrics",  // give your dashboard a name (required!)
-            "refresh": 5000,  // each dashboard has its own refresh interval (in ms)
+            "refresh": 10000,  // each dashboard has its own refresh interval (in ms)
             // add an (optional) dashboard description. description can be written in markdown / html.
             //"scheme": "colorwheel",
             "description": "\n###ESB system health metrics"
@@ -664,36 +669,6 @@ var dashboards =
                         "yFormatterName" : "KMGTP"
                     }
 
-
-//                    {
-//                        "alias": "10_5_250_91.threads",  // display name for this metric
-//                        "targets": [""+tarprefix1+".ActiveMQ.threads.ThreadCount",
-//                            ""+tarprefix1+".ActiveMQ.threads.PeakThreadCount",
-//                            ""+tarprefix1+".ActiveMQ.threads.DaemonThreadCount"
-//                        ],  // enter your graphite barebone target expression here
-//                        "description": "The diagram indicates ActiveMQ threads usages", // enter your metric description here
-//                        "renderer": "line",
-//
-//                        "height" : 200,
-//                        "colspan" : 3,
-//                        "summaryFormatterName" : "KMBT",
-//                        "legendFormatterName" : "KMBT",
-//                        "yFormatterName" : "KMBT"
-//                    }
-
-//                    {
-//                        "alias": "10_5_250_91.login.count",  // display name for this metric
-//                        "target": "derivative("+tarprefix1+".ActiveMQ.queues.panviva_dev_supportpoint_public_security_login_request_1.EnqueueCount)",  // enter your graphite barebone target expression here
-//                        "description": "", // enter your metric description here
-//                        "renderer": "line",
-//                        "interpolation": "linear",
-//                        "height" : 200,
-//                        "colspan" : 3,
-//                        "summary" : "per_minute",
-//                        "summaryFormatterName" : "Raw"
-//
-//                    }
-
                 ]
         },
 
@@ -755,16 +730,6 @@ var dashboards =
                 {
                     "alias": "Avg Available Memory Over Time",
                     "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
-//                    "targets": ["aliasByNode(derivative(servers.system.cpu.user),4)",  // targets array can include strings,
-//                        // functions or dictionaries
-//                        {target: 'alias(derivative(servers.system.cpu.system,"system utilization")',
-//                            alias: 'system utilization',                           // if you use a graphite alias, specify it here
-//                            color: '#f00'}],                                       // you can also specify a target color this way
-                    // (note that these values are ignored on the demo)
-                    // annotator can also be a dictionary of target and description.
-                    // However, only one annotator is supported per-metric.
-//                    "annotator": {'target': 'events.deployment',
-//                        'description': 'deploy'},
                     "renderer": "line",
                     "description": "If it is low, then the system is likely running out of memory",
                     "interpolation": "linear",
@@ -789,6 +754,105 @@ var dashboards =
                     "colspan": 3
                 }
 
+            ]
+
+        },
+        /*
+         *  this per minute calculation
+          * is for graphite API scaleToSeconds, which actually does scale to 60/timeframe, and
+         *  value calculated is actually per minute (misleading name).
+         *  NOTE: this also leads to the carbon-schema setup, it's 60s by default which why uses 60 divides
+         *  timeframe here
+         */
+        { "name": "SPS Business Metrics",
+            "refresh": 10000,
+            "description": "\n###Monitoring SupportPoint Metrics"
+                + "\n ",
+            "gauges" :
+                [
+
+                ],
+            "metrics": [
+                {
+                    "alias": "Login requests overtime",
+                    "target": "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
+                    "description": "Login requests received by supportpoint over given time frame.",
+                    "interpolation": "linear",  // you can use different rickshaw interpolation values
+                    "stroke_width": 1 , // change stroke width
+                    "height" : 200,
+                    "renderer": "line",
+                    "colspan" : 1.5
+
+                },
+                {
+                    "alias": "Login requests total overtime",
+                    "target": ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+                    "description": "Total login requests received by supportpoint over given time frame.",
+                    "interpolation": "cardinal",  // you can use different rickshaw interpolation values
+                    "stroke_width": 1 , // change stroke width
+                    "height" : 200,
+                    "renderer": "area",
+                    "colspan" : 1
+
+                },
+                {
+                    "alias": "Per Minute",
+                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "size" : 210,
+                    "renderer":"tbox",
+                    "colspan" : 0.5,
+                    "valueName":"Login requests received:",
+                    "valueUom":"/minute",
+                    "Formatter":"KMBT",
+                    "threshold":{value:20,factor:"no"} //factor lt = less than or equal to, gt = greater than or equal to
+
+                },
+
+                {
+                    "alias": "Document retrieval requests overtime",
+                    "target" : ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+                    "renderer": "line",
+                    "description": "Document retrieval requests received by supportpoint over given time frame",
+                    "interpolation": "linear",
+                    "colspan": 2,
+                    "yFormatterName":"KMBT",
+                    "height" : 200
+                },
+                {
+                    "alias": "Per Minute",
+                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "size" : 210,
+                    "renderer":"tbox",
+                    "colspan" : 1,
+                    "valueName":"Document retrieval requests received:",
+                    "valueUom":"/minute",
+                    "Formatter":"KMBT",
+                    "threshold":{value:20,factor:"no"} //factor lt = less than or equal to, gt = greater than or equal to
+
+                },
+                {
+                    "alias": "Keyword search request",
+                    "target":
+                        ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+
+                    "renderer": "line",
+                    "description": "Keyword search requests received by supportpoint over give time frame",
+                    "interpolation": "linear",
+                    "height" : 200,
+                    "colspan": 2
+                },
+                {
+                    "alias": "Per Minute",
+                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "size" : 210,
+                    "renderer":"tbox",
+                    "colspan" : 1,
+                    "valueName":"Keyword search requests received:",
+                    "valueUom":"/minute",
+                    "Formatter":"KMBT",
+                    "threshold":{value:20,factor:"no"} //factor lt = less than or equal to, gt = greater than or equal to
+
+                }
             ]
 
         }
@@ -823,3 +887,38 @@ function at_least_a_day() {
 }
 
 
+/*
+ * Here are only several original Giraffe comments from author
+ */
+
+//{
+//    "alias": "Avg Available Memory Over Time",
+//    "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
+//                    "targets": ["aliasByNode(derivative(servers.system.cpu.user),4)",  // targets array can include strings,
+//                        // functions or dictionaries
+//                        {target: 'alias(derivative(servers.system.cpu.system,"system utilization")',
+//                            alias: 'system utilization',                           // if you use a graphite alias, specify it here
+//                            color: '#f00'}],                                       // you can also specify a target color this way
+// (note that these values are ignored on the demo)
+// annotator can also be a dictionary of target and description.
+// However, only one annotator is supported per-metric.
+//                    "annotator": {'target': 'events.deployment',
+//                        'description': 'deploy'},
+
+
+
+//{
+//    "alias": "Network",
+//    "targets": [
+//    "averageSeries("+tarprefix2+".network.currentBandWidth)",
+//    "averageSeries("+tarprefix2+".network.totalBytes)"
+//],
+//    "events": "*",  // instead of annotator, if you use the graphite events feature
+//    // you can retrieve events matching specific tag(s) -- space separated
+//    // or use * for all tags. Note you cannot use both annotator and events.
+//    "renderer": "line",
+//    "description": "Network IO Traffic and current bandwidth",
+//    "interpolation": "linear",
+//    "height" : 200,
+//    "colspan": 3
+//}

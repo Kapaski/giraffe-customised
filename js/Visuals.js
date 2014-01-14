@@ -954,6 +954,9 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
             case "KMBT":
                 return _formatBase1000KMBT;
                 break
+            case "perMin":
+                return _avg
+                break
             default:
                 return this._noneFormatter;
                 break
@@ -977,17 +980,16 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
         return f(r)
     },
 
-    tboxFactory : function(size, anchor, value){
+    tboxFactory : function(size, anchor, value,rawvalue){
        var config =
         {
             size: size || 120,
             value: undefined != value ? value : 0,
             threshold: this.params.threshold || null,
             height: this.params.height || null,
-            width: this.params.width || 200
-
+            width: this.params.width || 200,
+            rawvalue:rawvalue||0
         }
-
         var tbox = new TBox(anchor, config);
 
         var svgid = "#tbox-"+anchor.replace("#","")
@@ -1008,6 +1010,7 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
 
     render : function(series) {
         var curSeries = []
+        var rawValue = 0;
         var formatterName = this.params.Formatter || "none"
         var formatter = this._switchFormatter(formatterName)
         series.forEach(function(d){
@@ -1025,6 +1028,7 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
                 if(formatter===undefined) {
                     formatter = d3.format(".8r")
                 }
+                rawValue = curValue
                 curValue = formatter(curValue)
                 var name = this.params.valueName || "";
                 var uom = this.params.valueUom || ""
@@ -1037,7 +1041,7 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
             }
             ,this)
         var id = "#tbox-"+this.params.anchor.replace("#","")
-        this._box = this.tboxFactory(this.params.size,id,curSeries);
+        this._box = this.tboxFactory(this.params.size,id,curSeries,rawValue);
 
 
     }

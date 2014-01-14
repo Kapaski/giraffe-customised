@@ -471,6 +471,9 @@ serverSelectionScaffold = function() {
         if(dname.indexOf("App")!==-1) {
             type =  "AppServer"
         }
+        if(dname.indexOf("Business")!==-1) {
+            type =  "SpsBusiness"
+        }
         return type
     }
     var dropdowncontext = serverdropdownlist
@@ -617,6 +620,16 @@ generateDataURL = function(targets, annotator_target, max_data_points,overridepe
     max_data_points = ""
     var p = overrideperiod? overrideperiod : period
 
+  /*
+   * this scalep is for graphite API scaleToSeconds, which actually does scale to 60/timeframe, and
+   * value calculated is actually per minute (misleading name).
+   * NOTE: this also leads to the carbon-schema setup, it's 60s by default which why uses 60 divides timeframe
+   * here
+   */
+  var scalep = p!=0?(60/p).toFixed(5):1
+  if(data_targets.indexOf("(2)")) {
+      data_targets = data_targets.replace(/\(2\)/g,scalep)
+  }
    //  console.log("overide ",p," for ",targets)
 
     var url =  "" + graphite_url + "/render?from=-" + p + "minutes&" + data_targets + annotator_target + "&maxDataPoints=" + max_data_points + "&format=json&jsonp=?";

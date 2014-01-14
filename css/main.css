@@ -199,8 +199,19 @@ h2, h3 {
     display:table-cell;
     text-align: center;
     vertical-align: middle;
-    width:inherit;
+
 }
+.tbox-holder.in-graph {
+    min-height: 20px;
+    margin-bottom: 20px;
+    margin:auto;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding-bottom: 5px;
+    display:table-cell;
+    text-align: center;
+    vertical-align: middle;
+ }
 .tbox-uom {
     display:inline;
     margin:auto;

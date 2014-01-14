@@ -101,6 +101,16 @@ var serverdropdownlist = [
         ]
     },
     {
+        type:"SpsBusiness",
+        servers:[
+            {
+                name:"App1",
+                address:"127.0.0.1",
+                port:"22001"
+            }
+        ]
+    },
+    {
         type:"SQL",
         servers:[
             {
