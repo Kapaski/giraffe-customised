@@ -5,14 +5,6 @@ var auth, changeDashboard, changeServer,createGraph, dashboard, dataPoll, defaul
     graphScaffold, graphScaffoldMulti,serversChart, serverInfo, graphite_url, graphs, init, metrics, period, refresh, refreshSummary,
     refreshTimer, scheme, toggleCss, _avg, _formatBase1024KMGTP, _last, _max, _min, _sum,gauges,_perminute;
 
-
-var timeNow = function() {
-    $("#current-time").text(moment().format("D MMM HH:mm"))
-}
-setInterval(timeNow,1000*60)
-timeNow()
-
-
 graphite_url = graphite_url || 'demo';
 
 default_graphite_url = graphite_url;
@@ -154,7 +146,7 @@ _formatBase1000KMBT = function(y) {
     else if (abs_y >= 1000000000) { return formatter(y / 1000000000) + "B" }
     else if (abs_y >= 1000000)    { return formatter(y / 1000000) + "M" }
     else if (abs_y >= 1000)       { return formatter(y / 1000) + "K" }
-    else if (abs_y < 1 && y > 0)  { return formatter(y) }
+    else if (abs_y < 1000 && y > 0)  { return formatter(y) }
     else if (abs_y === 0)         { return 0 }
     else                      { return y }
 };
@@ -175,7 +167,7 @@ _formatBase1024MGTP = function(y) {
         return formatter(y / 1048576) + "G";
     } else if (abs_y >= 1024) {
         return formatter(y / 1024) + "M";
-    } else if (abs_y < 1 && y > 0) {
+    } else if (abs_y < 1024 && y > 0) {
         return formatter(y) +"K";
     } else if (abs_y === 0) {
         return 0;
@@ -341,7 +333,7 @@ graphScaffoldMulti = function(dashboards) {
      */
 
     graph_template = "{{#dashboard_description}}\n    " +
-        "<div class=\"well-small-title\">{{{dashboard_description}}}</div> {{/dashboard_description}}\n" +
+        "<div class=\"well-small-title\" id=\"title-gauge-{{graph_id}}\">{{{dashboard_description}}}</div> {{/dashboard_description}}\n" +
         //Visuals (gauges) div and svg
         "{{#gauges}}\n  {{#start_row}}\n "+
         "<div class=\"row-fluid gauges-group\">\n  {{/start_row}}\n    " +
@@ -428,6 +420,7 @@ graphScaffoldMulti = function(dashboards) {
         for (i = _j = 0, _len1 = gaugesHere.length; _j < _len1; i = ++_j) {
             metric = gaugesHere[i];
             graphsHere.push(createGraph("#gauge-" + idx2, metric));
+
             idx2++
         }
         for (i = _j = 0, _len1 = metricsHere.length; _j < _len1; i = ++_j) {
@@ -438,6 +431,7 @@ graphScaffoldMulti = function(dashboards) {
         graphs.push(graphsHere)
     },this)
     graphs = _.flatten(graphs,true)
+
 };
 serverSelectionScaffold = function() {
     var template =
@@ -451,12 +445,12 @@ serverSelectionScaffold = function() {
             "<li role=\"presentation\" ><a class=\"serveritem\" role=\"menuitem\" tabindex=\"{{index}}\" href=\"#\">{{name}} - {{address}}</a></li>\n"+
         "{{/servers}}\n"+
         "<li role=\"presentation\" class=\"divider\"></li>\n"+
-        "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"#\">Back Home</a></li>\n"+
+//        "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"#\">Back Home</a></li>\n"+
         "</ul> </div> {{/type}}\n";
     //Prepare server switch dropdown variables
     var pageMap = function(dname) {
         var type = ""
-        if(dname.indexOf("WebTier")!==-1) {
+        if(dname.indexOf("Web")!==-1) {
             type =  "WebTier"
         }
         if(dname.indexOf("IOL")!==-1) {
@@ -465,14 +459,14 @@ serverSelectionScaffold = function() {
         if(dname.indexOf("ESB")!==-1) {
             type =  "ESB"
         }
-        if(dname.indexOf("MQ")!==-1) {
+        if(dname.indexOf("Messaging")!==-1) {
             type =  "MQ"
         }
-        if(dname.indexOf("App")!==-1) {
+        if(dname.indexOf("Server")!==-1) {
             type =  "AppServer"
         }
-        if(dname.indexOf("Business")!==-1) {
-            type =  "SpsBusiness"
+        if(dname.indexOf("Usage")!==-1) {
+            type =  "SpsUsage"
         }
         return type
     }
@@ -521,7 +515,7 @@ init = function() {
 
       $('.serveritem').click(function() {
           var serverInfo = $(this).attr('tabindex') || 0
-          console.log($(this).attr('tabindex'))
+          //console.log($(this).attr('tabindex'))
           changeServer(serverInfo)
           return false;
       });
@@ -646,15 +640,13 @@ generateEventsURL = function(event_tags) {
 
 createGraph = function(anchor, metric) {
 
-  var graph, graph_provider, unstackable, _ref, _ref1, _ref2;
-
+  var graph, graph_provider, unstackable, _ref, _ref1, _ref2
   if (graphite_url === 'demo') {
     graph_provider = Rickshaw.Graph.Demo;
 
   } else if (metric.renderer === 'gauge'||metric.renderer === 'box'|| metric.renderer ==='tbox') { //customised visualisations
     graph_provider = Visuals.Graph.JSONP.Graphite;
     graph = getGaugeInstance(graph_provider, anchor, metric)
-    //console.log(graph)
     return graph
 
   } else { // Giraffe out of box
@@ -944,7 +936,7 @@ Visuals.Graph.JSONP.Graphite = Visuals.Class.create(Visuals.Graph.JSONP, {
                 _this.success(_this.parseGraphiteData(result_data, _this.args.null_as));
             }
            series = _this.parseGraphiteData(result_data, _this.args.null_as);
-           //console.log(series)
+
            if (_this.args.annotator_target) {
                 annotations = _this.parseGraphiteData(_.filter(result, function(el) {
                     return el.target === _this.args.annotator_target.replace(/["']/g, '');
@@ -1262,6 +1254,10 @@ changeServer = function(serverinfo) {
     });
     return init()
 };
+$('#company-logo').click(function(e) {
+    var url = "#"
+    window.location=url;
+})
 
 $('.timepanel').on('click', 'a.range', function() {
 //  console.log("timepanel btn on click")

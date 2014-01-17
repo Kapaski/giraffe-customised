@@ -75,7 +75,7 @@ function TBox(placeholderName, configuration) {
        // console.log("compare ",this.config.rawvalue," ",this.config.threshold.value," as ",this.config.threshold.factor," ",over)
 
         if(over) {
-            d3.select('#'+anchor).style("background-color", "#d68170")
+            d3.select('#'+anchor).style("background-color", "#da4f49")
          }else {
 
         }

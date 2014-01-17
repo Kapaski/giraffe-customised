@@ -19,8 +19,11 @@
         <link rel="stylesheet" href="css/graph.css">
         <link rel="stylesheet" href="css/detail.css">
         <link rel="stylesheet" href="css/legend.css">
-		<link rel="stylesheet" href="css/main.css">    
-        <link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+
+        <link rel="stylesheet" href="css/Viewer.Core.css">
+        <link rel="stylesheet" href="css/main.css">
+
         <link href="css/print.css" rel="stylesheet" media="print">
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
@@ -35,9 +38,10 @@
                         <span class="icon-bar"></span>
                     </a>
                     <div class="brand" id="company-logo">Panviva Demo</div>
-                    <div class="nav-collapse collapse">SupportPoint</div>
                     <div class="nav-collapse collapse">
+
                         <ul class="nav">
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboards <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -45,9 +49,13 @@
                             </li>
 
                         </ul>
+                        <ul class="nav">
+                            <a id="visualisation-toggle" class="btn btn-small" title="SupportPoint Visualisations" href="visualisations.html">SupportPoint Analytics</i></a>
+
+                        </ul>
                         <div class="btn-toolbar pull-right">
                             <div class="btn-group timepanel">
-                                <a class="btn btn-small range" data-timeframe="10" href="#10m">10m</a>
+                                <a class="btn btn-small range" data-timeframe="30" href="#30m">30m</a>
                                 <a class="btn btn-small range" data-timeframe="60" href="#1h">1h</a>
                                 <a class="btn btn-small range" data-timeframe="180" href="#3h">3h</a>
                                 <a class="btn btn-small range" data-timeframe="480" href="#8h">8h</a>
@@ -63,7 +71,7 @@
                             <a id="axis-toggle" class="btn btn-small toggle active" title="grid" href="#"><i class="icon-th"></i></a>
                             <a id="x-label-toggle" class="btn btn-small toggle active" title="x labels" href="#"><i class="icon-comment"></i></a>
                             <a id="x-item-toggle" class="btn btn-small toggle active" title="x tooltip" href="#"><i class="icon-remove-circle"></i></a>
-                            <div class="brand" id="current-time"></div>
+                            <label class="btn btn-small time-btn active" title="current time" id="current-time"></label>
                         </div>
 
                     </div><!--/.nav-collapse -->
@@ -72,10 +80,10 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="overflow-y: scroll">
             <div class="dashboard-content">
                 <div class="page-header"><h1></h1></div>
-                <div id="serverlist" style="padding-bottom: 10px"></div>
+                <div class="json-list" id="serverlist" ></div>
 
                 <div id="graphs"></div>
             </div>
@@ -85,11 +93,7 @@
 
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
         <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\\/script>')</script>-->
-        <script type="text/javascript">
-            console.log("Sixtree metrics visualisation solution")
 
-
-        </script>
         <script src="js/vendor/jquery-1.8.3.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/jquery-ui.min.js"></script>
@@ -111,9 +115,13 @@
 
         <script src="js/giraffe-annotator.js"></script>
         <script src="js/giraffe.js"></script>
-        <script type="text/javascript" src="js/vendor/jquery.fittext.js"></script>
         <script type="text/javascript">
-            jQuery(".fittext").fitText();
+            console.log("Sixtree metrics visualisation solution")
+            var timeNow = function() {
+                $("#current-time").text(moment().format("D MMM HH:mm"))
+            }
+            setInterval(timeNow,1000*60)
+            timeNow()
         </script>
     </body>
 </html>

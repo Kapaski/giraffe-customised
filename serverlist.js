@@ -50,16 +50,17 @@ var serverdropdownlist = [
         type:"ESB",
         servers:[
             {
+                name:"Mule01",
+                address:"10.5.250.12",
+                port:"22002"
+
+            },
+            {
                 name: "Mule00",
                 address:"127.0.0.1",
                 port:"22001"
-            },
-            {
-                name:"Mule01",
-                address:"10.2.250.3",
-                port:"21002"
-
             }
+
         ]
     },
     {
@@ -72,8 +73,8 @@ var serverdropdownlist = [
             },
             {
                 name:"Amq01",
-                address:"10.20.1.9",
-                port:"21001"
+                address:"10.5.250.12",
+                port:"22001"
 
             },
             {
@@ -101,7 +102,7 @@ var serverdropdownlist = [
         ]
     },
     {
-        type:"SpsBusiness",
+        type:"SpsUsage",
         servers:[
             {
                 name:"App1",

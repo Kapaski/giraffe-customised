@@ -2354,7 +2354,7 @@ input[type="submit"].btn.btn-mini {
   border-bottom-right-radius: 6px;
 }
 .btn-group > .btn:hover,
-.btn-group > .btn:focus,
+.btn-group > ..,
 .btn-group > .btn:active,
 .btn-group > .btn.active {
   z-index: 2;

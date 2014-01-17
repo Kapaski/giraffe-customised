@@ -264,7 +264,7 @@ function Gauge(placeholderName, configuration)
                         }
                     }
                     //console.log(threshold)
-                    return over?"d68170":"#ffffff"
+                    return over?"#da4f49":"#ffffff"
                 }
             })
     }

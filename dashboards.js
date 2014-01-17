@@ -32,7 +32,7 @@
 
  */
 
-var graphite_url = "http://10.20.19.83:8888";  //"http://192.168.1.7:8888"// enter your graphite url, e.g. http://your.graphite.com
+var graphite_url = "http://10.5.250.95:8888";  //"http://192.168.1.7:8888"// enter your graphite url, e.g. http://your.graphite.com
 
 //This is for overall metrics page, must configure upfront and no dynamic change
 //Add more prefixes for different JVM ports
@@ -48,7 +48,7 @@ var timeframe = "(2)"
 
 var dashboards =
     [
-        {  "name": "SPS Average Metrics", //For overall page, not recommend to use [metrics] elements
+        {  "name": "Summary", //For overall page, not recommend to use [metrics] elements
             "refresh": 10000,
             dashboards: [
                 {   "description": "\n####Web Tier" //Use description here as sub-dashboard title
@@ -57,42 +57,43 @@ var dashboards =
                     "gauges" :
                         [
                             {
-                                "alias": "% Avg Processor used",  // display name for this metric
+                                "alias": "Processor Usage (avg %)",  // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".processor.usage)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
-                                "size": 100
+                                "size": 100,
+                                "threshold":{value:80,factor:"gt"}
                             },
                             {
-                                "alias": "Avg Available Memory", // display name for this metric
+                                "alias": "Available Memory (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".memory.availableKB)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"MGTP",
-                                "valueName":"available physical memory among servers",
+                                "valueName":"physical memory",
                                 "valueUom" :""
                             },
                             {
-                                "alias": "Avg Network Traffic", // display name for this metric
+                                "alias": "Network Traffic (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.totalBytes)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Network sent and received traffic",
+                                "valueName":"sent and received",
                                 "valueUom" :"/sec",
-                                "threshold": {value:1024*1024,factor:"lt"}
+                                "threshold": {value:1024*1024,factor:"gt"}
                             },
                             {
-                                "alias": "Avg Network Bandwidth", // display name for this metric
+                                "alias": "Network Bandwidth (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.currentBandWidth)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Average Current Network Bandwidth",
-                                "valueUom" :""
+                                "valueName":"Network Utilisation",
+                                "valueUom" :"bytes/sec"
                             }
 
                         ]
@@ -104,41 +105,41 @@ var dashboards =
                     "gauges" :
                         [
                             {
-                                "alias": "% Avg Processor used",  // display name for this metric
+                                "alias": "Processor Usage (avg %)",  // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".processor.usage)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
                                 "size": 100
                             },
                             {
-                                "alias": "Avg Available Memory", // display name for this metric
+                                "alias": "Available Memory (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".memory.availableKB)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"MGTP",
-                                "valueName":"available physical memory among servers",
+                                "valueName":"physical memory",
                                 "valueUom" :""
                             },
                             {
-                                "alias": "Avg Network Traffic", // display name for this metric
+                                "alias": "Network Traffic (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.totalBytes)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Network sent and received traffic",
+                                "valueName":"sent and received",
                                 "valueUom" :"/sec"
                             },
                             {
-                                "alias": "Avg Network Bandwidth", // display name for this metric
+                                "alias": "Network Bandwidth (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.currentBandWidth)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Average Current Network Bandwidth",
-                                "valueUom" :""
+                                "valueName":"Network Utilisation",
+                                "valueUom" :"bytes/sec"
                             }
                         ]
                 },
@@ -148,7 +149,7 @@ var dashboards =
                     "gauges" :
                         [
                             {
-                                "alias": "% Avg Mule CPU Usage",  // display name for this metric
+                                "alias": "Processor Usage (avg %)",  // display name for this metric
                                 "target": "averageSeries("+tarprefix_2+".ActiveMQ.os.ProcessCpuLoad)",
                                 "description": "",
                                 "renderer": "gauge",
@@ -158,7 +159,7 @@ var dashboards =
 
                             },
                             {
-                                "alias": "% Avg Mule Heap Mem Usage",  // display name for this metric
+                                "alias": "Heap Memory Usage (avg %)",  // display name for this metric
                                 "target": "divideSeries("+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
@@ -168,35 +169,35 @@ var dashboards =
 
                             },
                             {
-                                "alias": "Avg Network Traffic", // display name for this metric
+                                "alias": "Network Traffic (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.totalBytes)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Network sent and received traffic",
+                                "valueName":"sent and received",
                                 "valueUom" :"/sec"
                             },
                             {
-                                "alias": "Avg Network Bandwidth", // display name for this metric
+                                "alias": "Network Bandwidth (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.currentBandWidth)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Average Current Network Bandwidth",
-                                "valueUom" :""
+                                "valueName":"Network Utilisation",
+                                "valueUom" :"bytes/sec"
                             }
                         ]
 
                 },
-                {   "description": "\n####ActiveMQ"
+                {   "description": "\n####Messaging Bus"
                     + "\n___",
                     "refresh": 10000,
                     "gauges" :
                         [
                             {
-                                "alias": "% Avg ActiveMQ CPU Usage",  // display name for this metric
+                                "alias": "Processor Usage (avg %)",  // display name for this metric
                                 "target": "averageSeries("+tarprefix_2+".ActiveMQ.os.ProcessCpuLoad)",
                                 "description": "",
                                 "renderer": "gauge",
@@ -206,7 +207,7 @@ var dashboards =
 
                             },
                             {
-                                "alias": "% Avg ActiveMQ Heap Mem Usage",  // display name for this metric
+                                "alias": "Heap Memory Usage (avg %)",  // display name for this metric
                                 "target": "divideSeries("+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.init)",
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
@@ -216,78 +217,78 @@ var dashboards =
 
                             },
                             {
-                                "alias": "Avg Network Traffic", // display name for this metric
+                                "alias": "Network Traffic (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.totalBytes)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Network sent and received traffic",
+                                "valueName":"sent and received",
                                 "valueUom" :"/sec"
                             },
                             {
-                                "alias": "Avg Network Bandwidth", // display name for this metric
+                                "alias": "Network Bandwidth (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.currentBandWidth)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Average Current Network Bandwidth",
-                                "valueUom" :""
+                                "valueName":"Network Utilisation",
+                                "valueUom" :"bytes/sec"
                             }
 
                         ]
 
 
                 },
-                {   "description": "\n####Application Server"
+                {   "description": "\n####SupportPoint Server"
                     + "\n___",
                     "refresh": 10000,
                     "gauges" :
                         [
                             {
-                                "alias": "% Avg Processor used",  // display name for this metric
+                                "alias": "Processor Usage (avg %)",  // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".processor.usage)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
                                 "size": 100
                             },
                             {
-                                "alias": "Avg Available Memory", // display name for this metric
+                                "alias": "Available Memory (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".memory.availableKB)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"MGTP",
-                                "valueName":"available physical memory among servers",
+                                "valueName":"physical memory",
                                 "valueUom" :""
                             },
                             {
-                                "alias": "Avg Network Traffic", // display name for this metric
+                                "alias": "Network Traffic (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.totalBytes)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Network sent and received traffic",
+                                "valueName":"sent and received",
                                 "valueUom" :"/sec"
                             },
                             {
-                                "alias": "Avg Network Bandwidth", // display name for this metric
+                                "alias": "Network Bandwidth (avg)", // display name for this metric
                                 "target": "averageSeries("+tarprefix_1+".network.currentBandWidth)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "tbox",
                                 "size": 100, //currently for gauge only
                                 "Formatter":"KMGTP",
-                                "valueName":"Average Current Network Bandwidth",
-                                "valueUom" :""
+                                "valueName":"Network Utilisation",
+                                "valueUom" :"bytes/sec"
                             }
                         ]
                 }
             ]
         },
 
-        { "name": "WebTier Servers",
+        { "name": "Web Tier",
             "refresh": 10000,
             // you can use any rickshaw supported color scheme.
             // Enter palette name as string, or an array of colors
@@ -303,7 +304,7 @@ var dashboards =
             "metrics": [
 
                 {
-                    "alias": "% Processor Time",  // display name for this metric
+                    "alias": "Processor Usage (%)",  // display name for this metric
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // enter your graphite barebone target expression here
                     "description": "",  // enter your metric description here
                     "renderer": "gauge",
@@ -315,12 +316,12 @@ var dashboards =
                    "threshold":{value:80,factor:"gt"} //factor lt = less than or equal to, gt = greater than or equal to
                 },
                 {
-                    "alias": "% Avg Processor Usage Over Time",
+                    "alias": "Processor Usage Over Time",
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "description": "cpu utilization revealed from both Processor Time %. Higher % means slower performance",
-                    "interpolation": "linear",  // you can use different rickshaw interpolation values
+                    "description": "",
+                    "interpolation": "cardinal",  // you can use different rickshaw interpolation values
                     "stroke_width": 1 , // change stroke width
                     "height" : 200,
                     "renderer": "line",
@@ -328,24 +329,24 @@ var dashboards =
 
                 },
                 {
-                    "alias": "Avg Available Memory",
-                    "target": "averageSeries("+tarprefix2+".memory.availableKB)",
+                    "alias": "Available Memory",
+                    "target": ""+tarprefix2+".memory.availableKB",
                     // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "description":"Average available memory during given timeframe",
+                    "description":"",
                     "size" : 195,
                     "renderer":"tbox",
                     "colspan" : 0.5,
                     "valueName":"",
                     "valueUom":"",
                     "Formatter":"MGTP",
-                    "threshold":{value:1024*1024*3,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                    "threshold":{value:1024*512,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
                 },
                 {
-                    "alias": "Avg Available Memory Over Time",
-                    "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
+                    "alias": "Available Memory Over Time",
+                    "target" : ""+tarprefix2+".memory.availableKB",
 //                    "targets": ["aliasByNode(derivative(servers.system.cpu.user),4)",  // targets array can include strings,
 //                        // functions or dictionaries
 //                        {target: 'alias(derivative(servers.system.cpu.system,"system utilization")',
@@ -358,7 +359,7 @@ var dashboards =
 //                        'description': 'deploy'},
                     "renderer": "line",
                     "description": "If it is low, then the system is likely running out of memory",
-                    "interpolation": "linear",
+                    "interpolation": "cardinal",
                     "colspan": 2.5,
                     "yFormatterName":"MGTP",
                     "height" : 200
@@ -375,7 +376,8 @@ var dashboards =
                     // or use * for all tags. Note you cannot use both annotator and events.
                     "renderer": "line",
                     "description": "Network IO Traffic and current bandwidth",
-                    "interpolation": "linear",
+                    "interpolation": "cardinal",
+                    "yFormatterName":"KMGTP",
                     "height" : 200,
                     "colspan": 3
                 }
@@ -387,7 +389,7 @@ var dashboards =
 
         },
 
-        { "name": "IOL Servers",
+        { "name": "IOL",
             "refresh": 10000,
             // you can use any rickshaw supported color scheme.
             // Enter palette name as string, or an array of colors
@@ -402,49 +404,48 @@ var dashboards =
                 ],
             "metrics": [
                 {
-                    "alias": "% Processor Time",  // display name for this metric
+                    "alias": "Processor Usage (%)",  // display name for this metric
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // enter your graphite barebone target expression here
                     "description": "",  // enter your metric description here
                     "renderer": "gauge",
-                    "size": 210,
+                    "size": 150,
                     "Formatter":"none",
-                    "colspan" : 1
+                    "colspan" : 0.5
 //                        "yellowZones":[{from:10,to:20}],
 //                        "redZones":[{from:0,to:10}],
 //                        "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
                 },
                 {
-                    "alias": "% Avg Processor Usage Over Time",
+                    "alias": "Processor Usage Over Time",
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "description": "cpu utilization revealed from both Processor Time %. Higher % means slower performance",
-                    "interpolation": "linear",  // you can use different rickshaw interpolation values
+                    "description": "",
+                    "interpolation": "cardinal",  // you can use different rickshaw interpolation values
                     "stroke_width": 1 , // change stroke width
                     "height" : 200,
                     "renderer": "line",
-                    "colspan" : 2
+                    "colspan" : 2.5
 
                 },
                 {
-                    "alias": "Avg Available Memory",
+                    "alias": "Available Memory",
                     "target": "averageSeries("+tarprefix2+".memory.availableKB)",
                     // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "size" : 210,
+                    "description":"",
+                    "size" : 195,
                     "renderer":"tbox",
-                    "colspan" : 1,
+                    "colspan" : 0.5,
                     "valueName":"",
                     "valueUom":"",
-                    "Formatter":"MGTP"
-//                    "yellowZones":[{from:10,to:20}],
-//                    "redZones":[{from:0,to:10}],
-//                    "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                    "Formatter":"MGTP",
+                    "threshold":{value:1024*1024*3,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
                 },
                 {
-                    "alias": "Avg Available Memory Over Time",
+                    "alias": "Available Memory Over Time",
                     "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
 //                    "targets": ["aliasByNode(derivative(servers.system.cpu.user),4)",  // targets array can include strings,
 //                        // functions or dictionaries
@@ -458,12 +459,11 @@ var dashboards =
 //                        'description': 'deploy'},
                     "renderer": "line",
                     "description": "If it is low, then the system is likely running out of memory",
-                    "interpolation": "linear",
-                    "colspan": 2,
+                    "interpolation": "cardinal",
+                    "colspan": 2.5,
                     "yFormatterName":"MGTP",
                     "height" : 200
                 },
-
                 {
                     "alias": "Network",
                     "targets": [
@@ -475,7 +475,8 @@ var dashboards =
                     // or use * for all tags. Note you cannot use both annotator and events.
                     "renderer": "line",
                     "description": "Network IO Traffic and current bandwidth",
-                    "interpolation": "linear",
+                    "interpolation": "cardinal",
+                    "yFormatterName":"KMGTP",
                     "height" : 200,
                     "colspan": 3
                 }
@@ -484,13 +485,21 @@ var dashboards =
 
         },
 
-        { "name": "ESB Metrics",  // give your dashboard a name (required!)
+        { "name": "ESB",  // give your dashboard a name (required!)
             "refresh": 10000,  // each dashboard has its own refresh interval (in ms)
             // add an (optional) dashboard description. description can be written in markdown / html.
             //"scheme": "colorwheel",
-            "description": "\n###ESB system health metrics"
-                + "\n Monitoring ESB JVM"
-                + "\n",
+            "description": "\n###Enterprise Service Bus (ESB)"
+               + "\n",
+            /*
+             *  1. top 5 slowest applications in terms of average event process time
+             *  box    highestMax(averageProcessTime)
+             2. top 5 busiest applications in terms of total events received
+             box    highestMax(totalEventsReceived)
+             3. esb events received and processed per minute
+             chart  scaleToSeconds(sumSeries(server.addr.*(flownamewildcard).totalEventsReceived,'time','avg'),timeframe)
+             */
+
             "gauges" :
                 [
 
@@ -498,32 +507,49 @@ var dashboards =
             "metrics":  // metrics is an array of charts on the dashboard
                 [
 
-//                    {
-//                        "alias": "Mule Top 5 Slow Flows",  // display name for this metric
-//                        "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.QueueSize,5)",
-//                        "description": "The diagram indicates the top 5 (or less) queues in queue size", // enter your metric description here
-//                        "renderer": "box",
-//                        "interpolation":"linear",
-//                        "height" : 200,
-//                        "colspan" : 3
-//
-//                    },
+
                     {
-                        "alias": "Mule Flows AverageProcessingTime",  // display name for this metric
-                        "target":"averageSeries("+tarprefix2+".Mule.app.*.AverageProcessingTime)",  // enter your graphite barebone target expression here
+                        "alias": "Processing Time (avg,ms)",  // display name for this metric
+                        "target":"averageSeries("+tarprefix1+".Mule.applications.*.AverageProcessingTime)",  // enter your graphite barebone target expression here
 
                         "description": "", // enter your metric description here
                         "renderer": "line",
                         "interpolation":"cardinal",
                         "height" : 200,
-                        "colspan":3,
+                        "colspan":1,
                         "summaryFormatterName" : "KMBT",
                         "legendFormatterName" : "KMBT",
                         "yFormatterName" : "KMBT"
                     },
                     {
-                        "alias": "% Mule CPU Usage",  // display name for this metric
-                        "target": ""+tarprefix1+".ActiveMQ.os.ProcessCpuLoad",
+                        "alias": "Flows Events Received (total)",  // display name for this metric
+                        "target":"sumSeries("+tarprefix1+".Mule.applications.*.TotalEventsReceived)",  // enter your graphite barebone target expression here
+
+                        "description": "", // enter your metric description here
+                        "renderer": "line",
+                        "interpolation":"cardinal",
+                        "height" : 200,
+                        "colspan":1,
+                        "summaryFormatterName" : "KMBT",
+                        "legendFormatterName" : "KMBT",
+                        "yFormatterName" : "KMBT"
+                    },
+                    {
+                        "alias": "Processed Events (total)",  // display name for this metric
+                        "target":"sumSeries("+tarprefix1+".Mule.applications.*.ProcessedEvents)",  // enter your graphite barebone target expression here
+
+                        "description": "", // enter your metric description here
+                        "renderer": "line",
+                        "interpolation":"cardinal",
+                        "height" : 200,
+                        "colspan":1,
+                        "summaryFormatterName" : "KMBT",
+                        "legendFormatterName" : "KMBT",
+                        "yFormatterName" : "KMBT"
+                    },
+                    {
+                        "alias": "Processor Usage (%)",  // display name for this metric
+                        "target": ""+tarprefix1+".Mule.os.ProcessCpuLoad",
                         "description": "", // enter your metric description here
                         "renderer": "gauge",
                         "size" : 150,
@@ -531,8 +557,8 @@ var dashboards =
                         "Formatter" : "percent"
                     },
                     {
-                        "alias": "Mule CPU Usage",  // display name for this metric
-                        "target":""+tarprefix1+".ActiveMQ.os.ProcessCpuLoad",
+                        "alias": "Processor Usage Over Time",  // display name for this metric
+                        "target":""+tarprefix1+".Mule.os.ProcessCpuLoad",
                         "description": "", // enter your metric description here
                         "renderer": "line",
                         "interpolation":"cardinal",
@@ -543,8 +569,8 @@ var dashboards =
                         "yFormatterName" : "percent"
                     },
                     {
-                        "alias": "% Mule Heap Memory Usage",  // display name for this metric
-                        "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init)",
+                        "alias": "Heap Memory Usage (%)",  // display name for this metric
+                        "target": "divideSeries("+tarprefix1+".Mule.heap.HeapMemoryUsage.used,"+tarprefix1+".Mule.heap.HeapMemoryUsage.init)",
                         "description": "", // enter your metric description here
                         "renderer": "gauge",
                         "size" : 150,
@@ -552,10 +578,10 @@ var dashboards =
                         "Formatter" : "percent"
                     },
                     {
-                        "alias": "Mule Memory Usage",  // display name for this metric
-                        "targets": [""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init",
-                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used",
-                            ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.committed"
+                        "alias": "Memory Usage Over Time",  // display name for this metric
+                        "targets": [""+tarprefix1+".Mule.heap.HeapMemoryUsage.init",
+                            ""+tarprefix1+".Mule.heap.HeapMemoryUsage.used",
+                            ""+tarprefix1+".Mule.heap.HeapMemoryUsage.committed"
                         ],  // enter your graphite barebone target expression here
 
                         "description": "", // enter your metric description here
@@ -569,12 +595,11 @@ var dashboards =
 
                 ]
         },
-        { "name": "ActiveMQ Metrics",  // give your dashboard a name (required!)
+        { "name": "Messaging Bus",  // give your dashboard a name (required!)
             "refresh": 10000,  // each dashboard has its own refresh interval (in ms)
             // add an (optional) dashboard description. description can be written in markdown / html.
             //"scheme": "colorwheel",
-            "description": "\n###ActiveMQ system health metrics"
-                + "\n Monitoring ActiveMQ JVM"
+            "description": "\n###Messaging Bus system health metrics"
                 + "\n",
             "gauges" :
                 [
@@ -584,9 +609,9 @@ var dashboards =
                 [
 
                     {
-                        "alias": "Avg Top 5 Busy Queues",  // display name for this metric
+                        "alias": "Top 5 Queue Throughput",  // display name for this metric
                         "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.DequeueCount,5)",
-                        "description": "The diagram indicates over time peak values", // enter your metric description here
+                        "description": "Total Dequeued Messages", // enter your metric description here
                         "renderer": "box",
                         "height" : 200,
                         "colspan" : 1,
@@ -594,9 +619,9 @@ var dashboards =
 
                     },
                     {
-                        "alias": "Current Top 5 Pending Queues",  // display name for this metric
+                        "alias": "Top 5 Pending Queues",  // display name for this metric
                         "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.QueueSize,5)",
-                        "description": "The diagram indicates current values", // enter your metric description here
+                        "description": "Current Queue Depths", // enter your metric description here
                         "renderer": "box",
                         "height" : 200,
                         "overridePeriod":"2", //string value in minutes, 2min is best for current value
@@ -606,7 +631,7 @@ var dashboards =
                     },
 
                     {
-                        "alias": "ActiveMQ Queue Metrics",  // display name for this metric
+                        "alias": "Queue Reconcilliation",  // display name for this metric
                         "targets": [
                             ""+tarprefix1+".ActiveMQ.queues_total.TotalMessageCount",
                             ""+tarprefix1+".ActiveMQ.queues_total.TotalDequeueCount",
@@ -614,7 +639,7 @@ var dashboards =
                         ],
                         "description": "The diagram indicates ActiveMQ total message counts by status", // enter your metric description here
                         "renderer": "line",
-                        "interpolation":"linear",
+                        "interpolation":"cardinal",
                         "height" : 200,
                         "colspan" : 3,
                         "summaryFormatterName" : "KMBT", //Currently has 3 types of formatter KMGTP/KMBT/Raw
@@ -623,7 +648,7 @@ var dashboards =
 
                     },
                     {
-                        "alias": "% ActiveMQ CPU Usage",  // display name for this metric
+                        "alias": "Processor Usage (%)",  // display name for this metric
                         "target": ""+tarprefix1+".ActiveMQ.os.ProcessCpuLoad",
                         "description": "", // enter your metric description here
                         "renderer": "gauge",
@@ -632,7 +657,7 @@ var dashboards =
                         "Formatter" : "percent"
                     },
                     {
-                        "alias": "ActiveMQ CPU Usage",  // display name for this metric
+                        "alias": "Processor Usage Over Time",  // display name for this metric
                         "target":""+tarprefix1+".ActiveMQ.os.ProcessCpuLoad",
                         "description": "", // enter your metric description here
                         "renderer": "line",
@@ -645,7 +670,7 @@ var dashboards =
                     },
 
                     {
-                        "alias": "% ActiveMQ Heap Memory Usage",  // display name for this metric
+                        "alias": "Heap Memory Usage (%)",  // display name for this metric
                         "target": "divideSeries("+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init)",
                         "description": "", // enter your metric description here
                         "renderer": "gauge",
@@ -654,7 +679,7 @@ var dashboards =
                         "Formatter" : "percent"
                     },
                     {
-                        "alias": "ActiveMQ Memory Usage",  // display name for this metric
+                        "alias": "Memory Usage Over Time",  // display name for this metric
                         "targets": [""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.init",
                             ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.used",
                             ""+tarprefix1+".ActiveMQ.heap.HeapMemoryUsage.committed"
@@ -672,7 +697,7 @@ var dashboards =
                 ]
         },
 
-        { "name": "Application Servers",
+        { "name": "SupportPoint Server",
             "refresh": 10000,
             // you can use any rickshaw supported color scheme.
             // Enter palette name as string, or an array of colors
@@ -686,54 +711,50 @@ var dashboards =
 
                 ],
             "metrics": [ {
-                "alias": "% Processor Time",  // display name for this metric
+                "alias": "Processor Usage (%)",  // display name for this metric
                 "target": "averageSeries("+tarprefix2+".processor.usage)",  // enter your graphite barebone target expression here
                 "description": "",  // enter your metric description here
                 "renderer": "gauge",
-                "size": 210,
+                "size": 150,
                 "Formatter":"none",
-                "colspan" : 1
+                "colspan" : 0.5
 //                        "yellowZones":[{from:10,to:20}],
 //                        "redZones":[{from:0,to:10}],
 //                        "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
             },
                 {
-                    "alias": "% Avg Processor Usage Over Time",
+                    "alias": "Processor Usage Over Time",
                     "target": "averageSeries("+tarprefix2+".processor.usage)",  // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
-                    "description": "cpu utilization revealed from both Processor Time %. Higher % means slower performance",
-                    "interpolation": "linear",  // you can use different rickshaw interpolation values
+                    "description": "",
+                    "interpolation": "cardinal",  // you can use different rickshaw interpolation values
                     "stroke_width": 1 , // change stroke width
                     "height" : 200,
                     "renderer": "line",
-                    "colspan" : 2
+                    "colspan" : 2.5
 
                 },
                 {
-                    "alias": "Avg Available Memory",
+                    "alias": "Available Memory",
                     "target": "averageSeries("+tarprefix2+".memory.availableKB)",
                     // target can use any graphite-supported wildcards
                     //"annotator": 'events.deployment',  // a simple annotator will track a graphite event and mark it as 'deployment'.
                     // enter your graphite target as a string
                     "size" : 210,
                     "renderer":"tbox",
-                    "colspan" : 1,
+                    "colspan" : 0.5,
                     "valueName":"",
                     "valueUom":"",
                     "Formatter":"MGTP"
-//                    "yellowZones":[{from:10,to:20}],
-//                    "redZones":[{from:0,to:10}],
-//                    "threshold":{value:20,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
-
                 },
                 {
-                    "alias": "Avg Available Memory Over Time",
+                    "alias": "Available Memory Over Time",
                     "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
                     "renderer": "line",
                     "description": "If it is low, then the system is likely running out of memory",
-                    "interpolation": "linear",
-                    "colspan": 2,
+                    "interpolation": "cardinal",
+                    "colspan": 2.5,
                     "yFormatterName":"MGTP",
                     "height" : 200
                 },
@@ -749,7 +770,8 @@ var dashboards =
                     // or use * for all tags. Note you cannot use both annotator and events.
                     "renderer": "line",
                     "description": "Network IO Traffic and current bandwidth",
-                    "interpolation": "linear",
+                    "interpolation": "cardinal",
+                    "yFormatterName":"KMGTP",
                     "height" : 200,
                     "colspan": 3
                 }
@@ -764,7 +786,7 @@ var dashboards =
          *  NOTE: this also leads to the carbon-schema setup, it's 60s by default which why uses 60 divides
          *  timeframe here
          */
-        { "name": "SPS Business Metrics",
+        { "name": "SPS Usage",
             "refresh": 10000,
             "description": "\n###Monitoring SupportPoint Metrics"
                 + "\n ",
@@ -774,31 +796,31 @@ var dashboards =
                 ],
             "metrics": [
                 {
-                    "alias": "Login requests overtime",
+                    "alias": "Login Activity",
                     "target": "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
                     "description": "Login requests received by supportpoint over given time frame.",
-                    "interpolation": "linear",  // you can use different rickshaw interpolation values
-                    "stroke_width": 1 , // change stroke width
-                    "height" : 200,
-                    "renderer": "line",
-                    "colspan" : 1.5
-
-                },
-                {
-                    "alias": "Login requests total overtime",
-                    "target": ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
-                    "description": "Total login requests received by supportpoint over given time frame.",
                     "interpolation": "cardinal",  // you can use different rickshaw interpolation values
                     "stroke_width": 1 , // change stroke width
                     "height" : 200,
-                    "renderer": "area",
-                    "colspan" : 1
+                    "renderer": "line",
+                    "colspan" : 2.5
 
                 },
+//                {
+//                    "alias": "Login requests total overtime",
+//                    "target": ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+//                    "description": "Total login requests received by supportpoint over given time frame.",
+//                    "interpolation": "cardinal",  // you can use different rickshaw interpolation values
+//                    "stroke_width": 1 , // change stroke width
+//                    "height" : 200,
+//                    "renderer": "area",
+//                    "colspan" : 1
+//
+//                },
                 {
-                    "alias": "Per Minute",
+                    "alias": "Rate",
                     "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
-                    "size" : 210,
+                    "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
                     "valueName":"Login requests received:",
@@ -809,21 +831,21 @@ var dashboards =
                 },
 
                 {
-                    "alias": "Document retrieval requests overtime",
-                    "target" : ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+                    "alias": "Document Retrieval Activity",
+                    "target" : "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
                     "renderer": "line",
                     "description": "Document retrieval requests received by supportpoint over given time frame",
-                    "interpolation": "linear",
-                    "colspan": 2,
+                    "interpolation": "cardinal",
+                    "colspan": 2.5,
                     "yFormatterName":"KMBT",
                     "height" : 200
                 },
                 {
-                    "alias": "Per Minute",
+                    "alias": "Rate",
                     "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
-                    "size" : 210,
+                    "size" : 205,
                     "renderer":"tbox",
-                    "colspan" : 1,
+                    "colspan" : 0.5,
                     "valueName":"Document retrieval requests received:",
                     "valueUom":"/minute",
                     "Formatter":"KMBT",
@@ -831,22 +853,22 @@ var dashboards =
 
                 },
                 {
-                    "alias": "Keyword search request",
+                    "alias": "Search Activity",
                     "target":
-                        ""+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount",
+                        "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
 
                     "renderer": "line",
                     "description": "Keyword search requests received by supportpoint over give time frame",
-                    "interpolation": "linear",
+                    "interpolation": "cardinal",
                     "height" : 200,
-                    "colspan": 2
+                    "colspan": 2.5
                 },
                 {
-                    "alias": "Per Minute",
+                    "alias": "Rate",
                     "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
-                    "size" : 210,
+                    "size" : 205,
                     "renderer":"tbox",
-                    "colspan" : 1,
+                    "colspan" : 0.5,
                     "valueName":"Keyword search requests received:",
                     "valueUom":"/minute",
                     "Formatter":"KMBT",
@@ -892,7 +914,7 @@ function at_least_a_day() {
  */
 
 //{
-//    "alias": "Avg Available Memory Over Time",
+//    "alias": "Available Memory (avg) Over Time",
 //    "target" : "averageSeries("+tarprefix2+".memory.availableKB)",
 //                    "targets": ["aliasByNode(derivative(servers.system.cpu.user),4)",  // targets array can include strings,
 //                        // functions or dictionaries
@@ -918,7 +940,7 @@ function at_least_a_day() {
 //    // or use * for all tags. Note you cannot use both annotator and events.
 //    "renderer": "line",
 //    "description": "Network IO Traffic and current bandwidth",
-//    "interpolation": "linear",
+//    "interpolation": "cardinal",
 //    "height" : 200,
 //    "colspan": 3
 //}
