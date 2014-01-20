@@ -620,7 +620,7 @@ generateDataURL = function(targets, annotator_target, max_data_points,overridepe
    * NOTE: this also leads to the carbon-schema setup, it's 60s by default which why uses 60 divides timeframe
    * here
    */
-  var scalep = p!=0?(60/p).toFixed(5):1
+  var scalep = p!=0?(1/p).toFixed(8):(1/60)
   if(data_targets.indexOf("(2)")) {
       data_targets = data_targets.replace(/\(2\)/g,scalep)
   }

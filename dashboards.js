@@ -38,7 +38,7 @@ var graphite_url = "http://10.5.250.95:8888";  //"http://192.168.1.7:8888"// ent
 //Add more prefixes for different JVM ports
 var tarprefix_1 = "servers.*"
 var tarprefix_2 = "servers.*.22001"
-
+var tarprefix_3 = "servers.*.22002"
 
 //These are placeholders and will be replaced later.
 
@@ -150,7 +150,7 @@ var dashboards =
                         [
                             {
                                 "alias": "Processor Usage (avg %)",  // display name for this metric
-                                "target": "averageSeries("+tarprefix_2+".ActiveMQ.os.ProcessCpuLoad)",
+                                "target": "averageSeries("+tarprefix_3+".Mule.os.ProcessCpuLoad)",
                                 "description": "",
                                 "renderer": "gauge",
                                 "size": 100,
@@ -160,7 +160,7 @@ var dashboards =
                             },
                             {
                                 "alias": "Heap Memory Usage (avg %)",  // display name for this metric
-                                "target": "divideSeries("+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.used,"+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
+                                "target": "divideSeries("+tarprefix_3+".Mule.heap.HeapMemoryUsage.used,"+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
                                 "size": 100, //currently for gauge only
@@ -522,8 +522,8 @@ var dashboards =
                         "yFormatterName" : "KMBT"
                     },
                     {
-                        "alias": "Flows Events Received (total)",  // display name for this metric
-                        "target":"sumSeries("+tarprefix1+".Mule.applications.*.TotalEventsReceived)",  // enter your graphite barebone target expression here
+                        "alias": "Events Received (total)",  // display name for this metric
+                        "target":"derivative(sumSeries("+tarprefix1+".Mule.applications.*.TotalEventsReceived))",  // enter your graphite barebone target expression here
 
                         "description": "", // enter your metric description here
                         "renderer": "line",
@@ -536,7 +536,7 @@ var dashboards =
                     },
                     {
                         "alias": "Processed Events (total)",  // display name for this metric
-                        "target":"sumSeries("+tarprefix1+".Mule.applications.*.ProcessedEvents)",  // enter your graphite barebone target expression here
+                        "target":"derivative(sumSeries("+tarprefix1+".Mule.applications.*.ProcessedEvents))",  // enter your graphite barebone target expression here
 
                         "description": "", // enter your metric description here
                         "renderer": "line",
@@ -819,7 +819,7 @@ var dashboards =
 //                },
                 {
                     "alias": "Rate",
-                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
@@ -842,7 +842,7 @@ var dashboards =
                 },
                 {
                     "alias": "Rate",
-                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
@@ -865,7 +865,7 @@ var dashboards =
                 },
                 {
                     "alias": "Rate",
-                    "target": "scaleToSeconds("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
