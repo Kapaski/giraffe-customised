@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="components/lodash/dist/lodash.min.js"></script>
+    <link rel="stylesheet" href="js/Viewer.Core.min.css"/>
+    <style>
+        body {
+            font-size: 8px;
+            font: san-serif;
+        }
+        .grid .tick {
+            stroke: lightgrey;
+            opacity: 0.7;
+        }
+
+        .grid path {
+            stroke-width: 0;
+        }
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 1.5;
+        }
+        .plot {
+            fill: rgba(250, 250, 255, 0.6);
+        }
+        .focus circle {
+            fill: none;
+            stroke: steelblue;
+        }
+        .overlay {
+            fill: none;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<body>
+<div id="vis">
+
+</div>
+<script>
+    var margin = {top: 20, right: 20, bottom: 30, left: 50}
+    var w = 960 - margin.left - margin.right
+    var h = 500 - margin.top - margin.bottom
+    var svg = d3.select("#vis").append("svg")
+            .attr("width", w + margin.left + margin.right)
+            .attr("height", h + margin.top + margin.bottom)
+
+    //d3 data process is async, so need wrap whole thing in here for demo purpose
+    d3.json("OverPeriodValues_Demo.json", function (json) {
+        var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse
+        var parseInt = d3.format("%f")
+
+        json.forEach(function (d, i) {
+
+            d.datetime = parseDate(d.datetime)
+        })
+
+
+
+        var x = d3.time.scale()
+                .range([0, w])
+
+        var y = d3.scale.linear()
+                .range([h, 0])
+
+        x.domain(d3.extent(json, function (d) {
+            return d.datetime
+        }))
+
+        y.domain([
+            d3.min(json, function (d) {
+                return d.value
+            }),
+            d3.max(json, function (d) {
+                return d.value
+            })])
+
+        //Line generator
+        var line = d3.svg.line()
+                .x(function (d, i) {
+                    return x(d.datetime)
+                })
+                .y(function (d) {
+                    return y(d.value)
+                })
+
+        //event listener
+        var zoom = d3.behavior.zoom()
+                .x(x)
+                .y(y)
+                .on("zoom", zoomed)
+
+        //base canvas
+                svg.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .call(zoom)
+
+        //diagram background
+        svg.append("rect")
+                .attr("width", w)
+                .attr("height", h)
+                .attr("class", "plot");
+
+
+
+        var make_x_axis = function () {
+            return d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom")
+//                    .ticks(5)
+
+        };
+
+        var make_y_axis = function () {
+            return d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+//                    .tick(20)
+
+        };
+
+        //x axis generator
+        var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom")
+                .tickFormat(d3.time.format("%H:%M"))
+                .ticks(15)
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + h + ")")
+                .call(xAxis)
+
+
+
+        //y axis generator
+        var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .ticks(20)
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .text("Logins")
+
+
+        svg.append("g")
+                .attr("class","x grid")
+                .attr("transform", "translate(0,"+h+")")
+                .call(
+                        make_x_axis()
+                        .tickSize(-h, 0, 0)
+                        .tickFormat("")
+                );
+
+        svg.append("g")
+                .attr("class", "y grid")
+                .call(
+                        make_y_axis()
+                        .tickSize(-w, 0, 0)
+                        .tickFormat("")
+                )
+
+        var clip = svg.append("clipPath")
+                .attr("id", "clip")
+                .append("rect")
+                .attr("x", "0")
+                .attr("y", "0")
+                .attr("width", w)
+                .attr("height", h)
+
+        // Add the line by appending an svg:path element with the data line we created above
+        // do this AFTER the axes above so that the line is above the tick-lines
+        var chartBody = svg.append("g")
+                .attr("clip-path", "url(#clip)")
+
+        var path = chartBody.append("svg:path")
+                .datum(json)
+                .attr("class", "line")
+                .attr("d", line)
+
+
+
+
+    function zoomed() {
+        console.log(d3.event.translate);
+        console.log(d3.event.scale);
+        svg.select(".x.axis").call(xAxis);
+        svg.select(".y.axis").call(yAxis);
+        svg.select(".x.grid")
+                .call(make_x_axis()
+                        .tickSize(-h, 0, 0)
+                        .tickFormat("")
+                );
+        svg.select(".y.grid")
+                .call(make_y_axis()
+                        .tickSize(-w, 0, 0)
+                        .tickFormat("")
+                );
+        svg.select(".line")
+                .attr("class", "line")
+                .attr("d", line);
+    }
+        var bisectDate = d3.bisector(function(d) { return d.datetime; }).left
+        var focus = svg.append("g")
+                .attr("class", "focus")
+                .style("display", "none");
+
+        focus.append("circle")
+                .attr("r", 4.5);
+
+        focus.append("text")
+                .attr("x", 9)
+                .attr("dy", ".35em");
+
+        svg.append("rect")
+                .attr("class", "overlay")
+                .attr("width", w)
+                .attr("height", h)
+                .on("mouseover", function() { focus.style("display", null); })
+                .on("mouseout", function() { focus.style("display", "none"); })
+                .on("mousemove", mousemove);
+
+        function mousemove() {
+
+            //from range to domain inversion-i.e, coordination x to actual value x (date)
+            var x0 = x.invert(d3.mouse(this)[0])
+
+            var     i = bisectDate(json, x0, 1),
+                    d0 = json[i - 1],
+                    d1 = json[i],
+
+                    //smartly to decide the closet data node to show
+                    d = x0 - d0.datetime > d1.datetime - x0 ? d1 : d0;
+
+            focus.attr("transform", "translate(" + x(d.datetime) + "," + y(d.value) + ")");
+            focus.select("text").text(d.value+" logins at "+ d.datetime.getHours()+":"+ d.datetime.getMinutes());
+        }
+
+
+})
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

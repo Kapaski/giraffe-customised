@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/graph.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/legend.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/Viewer.Core.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link href="css/print.css" rel="stylesheet" media="print">
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="giraffe-navbar-inner" class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <div class="brand" id="company-logo">Panviva Demo</div>
+            <div class="nav-collapse collapse">
+                <a id="visualisation-toggle" class="btn btn-small" title="SupportPoint Visualisations"
+                   href="index.html">Dashboards</i></a>
+                <div class="btn-toolbar pull-right">
+                    <div class="btn-group timepanel">
+                        <label class="btn btn-small toggle active time-btn" id="current-time"></label>
+                    </div>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+
+        </div>
+    </div>
+
+</div>
+<div class="page-header"><h1>Visualisations</h1></div>
+
+<div class="json-list" id="visuallist"></div>
+<div id="contents" class="visual-div">
+    <h2 id="visualname"></h2>
+    <iframe id="main" frameborder="0" scrolling="auto"></iframe>
+</div>
+
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\\/script>')</script>-->
+<script src="js/vendor/jquery-1.8.3.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/jquery-ui.min.js"></script>
+<script src="js/vendor/jquery.rule-1.0.2-min.js"></script>
+<script src="js/vendor/underscore-min.js"></script>
+<script src="js/vendor/mustache.js"></script>
+<script src="js/vendor/jquery.ba-bbq.min.js"></script>
+<script src="js/vendor/d3.v3.js"></script>
+<script src="js/vendor/d3.v3.min.js"></script>
+<script src="js/vendor/Markdown.Converter.js"></script>
+<script src="js/vendor/moment.min.js"></script>
+<script type="text/javascript">
+    var indx = 0
+    var visuals = {
+        type:"d3",
+        filesets:[
+            {
+                name:"Search Term Analytics",
+                path:"app/sunburst-zoomable-static.html"
+            },
+            {
+                name:"Login Activity",
+                path:"app/linear-zoomable-static.html"
+            },
+            {
+                name:"Document Tree",
+                path:"app/partition-zoomable.html"
+            },
+            {
+                name:"Role User Tree",
+                path:"app/dendrogram-static.html"
+            }
+
+        ],
+        index:function() {
+            return indx++
+        }
+    }
+</script>
+<script type="text/javascript">
+var template =
+    "{{#type}} <div class=\"btn-group\">\n"+
+    "<button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\">\n"+
+    "Click to switch visualisations <span class=\"caret\"></span> \n"+
+    "</button>\n"+
+    "<ul class=\"dropdown-menu\" role=\"menu\" aria-labelledbyn\"dropdownMenu1\">\n"+
+    "{{#filesets}}"+
+    "<li role=\"presentation\" ><a class=\"visualitem\" role=\"menuitem\" tabindex=\"{{index}}\" href=\"#\">{{name}}</a></li>\n"+
+    "{{/filesets}}\n"+
+    "<li role=\"presentation\" class=\"divider\"></li>\n"+
+//    "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"visualisations.html\">Back Home</a></li>\n"+
+    "</ul> </div> {{/type}}\n";
+
+
+$('#visuallist').empty()
+$('#visuallist').append(Mustache.render(template, visuals));
+
+
+</script>
+<script type="text/javascript">
+    console.log("Sixtree metrics visualisation solution")
+    $("#company-logo")
+            .click(function(e){
+        window.location = "index.html"
+    })
+    var timeNow = function() {
+        $("#current-time").text(moment().format("D MMM HH:mm"))
+    }
+    setInterval(timeNow,1000*60)
+    timeNow()
+    //
+
+    $('#main').on('load',function(e){
+            return resetSize('#'+this.id)
+
+    })
+    var resetSize = function(id) {
+        var el = $(id)
+        var svg = el.contents().find('svg:first')
+        console.log('find ',svg.height(), svg.width())
+        el.height(svg.height()+'px');
+        el.width( svg.width()+'px');
+    }
+
+    var changeVisuals = function(indx) {
+       var url = visuals.filesets[indx]?visuals.filesets[indx].path : "visualisations.html"
+       $('#visualname').empty().text(visuals.filesets[indx].name)
+       $('#main').attr("src",url)
+       return $('#dropdownMenu1').dropdown("toggle")
+
+    }
+
+    $('.visualitem').click(function() {
+        var visualinfo = $(this).attr('tabindex') || 0
+
+        return changeVisuals(visualinfo)
+
+    });
+    //loadup
+    $(function() {
+        var url = visuals.filesets[0]
+        if(!visuals.filesets[0]) {
+            throw "No visualisation defined!"
+        }
+        url = url.path
+        $('.visualitem')[0].click()
+    })
+</script>
+
+</body>
+</html>

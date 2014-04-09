@@ -1,0 +1,182 @@
+[
+    {
+        "id":1,
+        "Application":"VIEWER",
+        "PersonId":358,
+        "Login":"dmalik",
+        "SearchTerm":"ntoe",
+        "DateTime":"2013-07-01 16:56:21.773",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":2,
+        "Application":"WEBVIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"code",
+        "DateTime":"2013-07-04 14:17:40.707",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":3,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"code",
+        "DateTime":"2013-07-04 14:17:45.063",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":4,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"code*",
+        "DateTime":"2013-07-04 14:18:34.170",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":5,
+        "Application":"WEBVIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"code*",
+        "DateTime":"2013-07-04 14:18:43.180",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":6,
+        "Application":"WEBVIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"cod*",
+        "DateTime":"2013-07-04 14:19:19.803",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":7,
+        "Application":"WEBVIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"co*",
+        "DateTime":"2013-07-04 14:19:35.643",
+        "NumOfResults":22,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":8,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"cod*",
+        "DateTime":"2013-07-04 14:19:48.330",
+        "NumOfResults":2,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":9,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"co*",
+        "DateTime":"2013-07-04 14:19:52.707",
+        "NumOfResults":25,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":10,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"co*",
+        "DateTime":"2013-07-04 14:20:56.253",
+        "NumOfResults":20,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":11,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"co*",
+        "DateTime":"2013-07-04 14:21:06.580",
+        "NumOfResults":20,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":12,
+        "Application":"WEBVIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"co*",
+        "DateTime":"2013-07-04 14:21:09.973",
+        "NumOfResults":20,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":13,
+        "Application":"VIEWER",
+        "PersonId":358,
+        "Login":"dmalik",
+        "SearchTerm":"test",
+        "DateTime":"2013-07-10 12:03:16.600",
+        "NumOfResults":4,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":14,
+        "Application":"VIEWER",
+        "PersonId":358,
+        "Login":"dmalik",
+        "SearchTerm":"test",
+        "DateTime":"2013-07-10 12:03:57.780",
+        "NumOfResults":4,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":15,
+        "Application":"VIEWER",
+        "PersonId":358,
+        "Login":"dmalik",
+        "SearchTerm":"test",
+        "DateTime":"2013-07-10 12:10:39.470",
+        "NumOfResults":4,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":16,
+        "Application":"VIEWER",
+        "PersonId":358,
+        "Login":"dmalik",
+        "SearchTerm":"ok",
+        "DateTime":"2013-07-10 12:10:44.083",
+        "NumOfResults":1,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":17,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"*s*",
+        "DateTime":"2013-07-26 14:22:45.723",
+        "NumOfResults":20,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    },
+    {
+        "id":18,
+        "Application":"VIEWER",
+        "PersonId":340,
+        "Login":"acurnow",
+        "SearchTerm":"*e*",
+        "DateTime":"2013-07-26 14:23:01.640",
+        "NumOfResults":20,
+        "ReportRunDate":"2013-08-12 16:39:30.000"
+    }
+]

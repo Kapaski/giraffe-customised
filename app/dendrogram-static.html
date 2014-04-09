@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="components/lodash/dist/lodash.min.js"></script>
+
+    <style>
+        .node circle {
+            cursor: pointer;
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 1.5;
+        }
+
+        .node {
+            font: 8px sans-serif;
+        }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div id="eg"></div>
+</body>
+<script>
+
+        var treeData = {}
+        var width = 768,
+                height = 1000;
+
+        var m = [20,120,20,120],
+                w = width - m[1] - m[3],
+                h = height - m[0] -m[2],
+                i = 0;
+
+
+        var tree = d3.layout.tree()
+                .size([h, w])
+                .children(function(d){
+                    return (d.children?d.children: d.values)
+                });
+
+        var diagonal = d3.svg.diagonal()
+                .projection(function (d) {
+                    return [d.y, d.x];
+                });
+
+        var svg = d3.select("#container").append("svg:svg")
+                .attr("width", w+m[1]+m[3])
+                .attr("height", h+m[0]+m[2])
+                .append("svg:g")
+                .attr("transform", "translate("+m[3]+","+m[0]+")");
+
+        var t = d3.select("#eg")
+                .append("a")
+                .attr("href","http://bl.ocks.org/mbostock/4339083")
+                .text("Another Example")
+
+
+        function loadData(source, callback) {
+            d3.json(source, function(error, root){
+                if(error){
+                    return console.warn(error)
+                }
+
+                var tempTree = d3.nest()
+
+                        .key(function(d){
+                            return "Level "+d.level;
+                        })
+                        .key(function(d){
+                            return d.Role;
+                        })
+                        .entries(root)
+
+                treeData={
+                 "name":"RoleUserTree",
+                 "children":tempTree
+                }
+                treeData.x0 = h/2
+                treeData.y0 = 0
+                treeData.children.forEach(toggle)
+                callback(treeData)
+            })
+
+        }
+        var update = function(source) {
+            if(source.children){
+                source.children.sort(function(a,b){
+                    return d3.ascending(a.key, b.key)
+                })
+            }
+            // ? altKey
+            var duration = d3.event && d3.event.altKey ? 5000 : 500;
+
+            // new tree layout
+            var nodes = tree.nodes(treeData).reverse();
+            var node = svg.selectAll(".node")
+                    .data(nodes, function(d){
+                        return d.id || (d.id = ++i)
+                    })
+//            nodes.forEach(function (d) {
+//                d.y= d.depth*180
+//            })
+            var nodeEnter = node.enter().append("svg:g")
+                    .attr("class", "node")
+                    .attr("transform", function(d) {
+                        return "translate("+source.y0+","+source.x0+")"
+                    })
+                    .on("click", function(d) {toggle(d);update(d);})
+
+
+            nodeEnter.append("svg:circle")
+                    .style("fill",function(d){
+                        return d.values ? "lightblue" : "#fff"
+                    })
+
+            nodeEnter.append("svg:text")
+                    .attr("x", function (d) {
+                        return d.children || d._children ? -10 : 10;
+                    })
+                    .attr("dy", "2px")
+                    .text(function (d) {
+                        if(d.name){
+                            return "/root"
+                        }
+                        return d.key? d.key: d.login
+                    })
+                    .style("fill-opacity",1e-6)
+                    .style("text-anchor", function (d) {
+                        return (d.children || d._children)? "end" : "start";
+                    })
+
+
+
+
+
+            var nodeUpdate = node
+                    .transition()
+                    .duration(duration)
+                    .attr("transform",function(d) {
+                        return "translate("+ (d.y) +","+ (d.x)+")"
+                    })
+
+
+            nodeUpdate.select("circle")
+                    .attr("r", 4)
+                    .style("fill", function(d) { return d._values || d._children ? "steelblue" : "#fff"; });
+
+            nodeUpdate.select("text")
+                    .style("fill-opacity", 1)
+
+
+            var nodeExit = node.exit()
+                    .transition()
+                    .duration(duration)
+                    .attr("transform", function(d) {
+                        return "translate ("+source.y+","+source.x+")"
+                    }).remove()
+
+            nodeExit.select("circle")
+                    .attr("r", 1e-6);
+
+            nodeExit.select("text")
+                    .style("fill-opacity", 1e-6);
+
+
+
+            var links = tree.links(nodes);
+
+
+            //the d.target.id is critical here to let link know where to connect
+            var link = svg.selectAll(".link")
+                    .data(links, function(d){
+                        return d.target.id;
+                    });
+
+            //?? why have to individually access enter /exit?
+            // Otherwise, in chain, it will throw 'Object has no method 'exit'
+            link.enter().insert("svg:path","g")
+                    .attr("class", "link")
+                    .attr("d", function(d) {
+                        var o = {x:source.x0, y:source.y0}
+                        return diagonal({source: o, target : o})
+
+                    })
+                    .transition()
+                    .duration(duration)
+                    .attr("d",diagonal)
+
+            link.transition()
+                    .duration(duration)
+                    .attr("d",diagonal)
+
+            link.exit()
+                    .transition()
+                    .duration(duration)
+                    .attr("d", function(d){
+                        var o = {x:source.x, y: source.y}
+                        return diagonal({source:o, target:o})
+                    })
+                    .remove()
+
+            nodes.forEach(function(d){
+                d.x0= d.x;
+                d.y0= d.y
+            })
+
+
+        }
+
+        function toggleAll(d) {
+            if(d.children) {
+                d.children.forEach(toggleAll)
+                toggle(d)
+            }
+        }
+
+        function toggle(d) {
+            /*
+            this has to conform with the manual added root "children" element
+            and the "values" elements from the 2nd level, which are both actually
+            in concept of children
+             */
+
+            if(d.children || d.values) {
+                if(d.values) {
+                    d._values = d.values
+                    d.values = null
+                    d._children = d.children
+                    d.children = null
+
+                }else{
+                    d._children = d.children
+                    d.children = null
+                }
+            }else {
+                if( d._values) {
+                    d.values = d._values
+                    d._values = null
+                    d.children = d._children
+                    d._children = null
+                }else{
+                    d.children = d._children
+                    d._cildren = null
+                }
+            }
+
+        }
+
+</script>
+<script>
+    loadData("GetRoleUserTree.json", update)
+
+</script>
+</html>

@@ -2,7 +2,7 @@
 //Modified by James, don't run CoffeeScript src to regenerate!
 var auth, changeDashboard, changeServer,createGraph, dashboard, dataPoll, default_graphite_url, default_period, description,
     generateDataURL, generateEventsURL, generateGraphiteTargets, getTargetColor, serverSelectionScaffold,
-    graphScaffold, graphScaffoldMulti,serversChart, serverInfo, graphite_url, graphs, init, metrics, period, refresh, refreshSummary,
+    graphScaffold, graphScaffoldMulti,serversChart, connectionStr, serverInfo, graphite_url, graphs, init, metrics, period, refresh, refreshSummary,
     refreshTimer, scheme, toggleCss, _avg, _formatBase1024KMGTP, _last, _max, _min, _sum,gauges,_perminute;
 
 graphite_url = graphite_url || 'demo';
@@ -141,6 +141,7 @@ _formatPercent = function(y) {
 }
 _formatBase1000KMBT = function(y) {
     var formatter = d3.format(".2r");
+    var formatter1 = d3.format(".8r");
     var abs_y = Math.abs(y);
     if (abs_y >= 1000000000000)   { return formatter(y / 1000000000000) + "T" }
     else if (abs_y >= 1000000000) { return formatter(y / 1000000000) + "B" }
@@ -586,7 +587,7 @@ generateGraphiteTargets = function(targets) {
     var _ref,i;
     i = (_ref = $.bbq.getState()) != null ? _ref.serverindex : 0;
     //console.log("_ref is ",_ref)
-    var connectionStr = ""
+    connectionStr = ""
     if(serversChart&&serversChart.servers) {
         try{
             var addr = serversChart.servers[i].address
@@ -595,6 +596,7 @@ generateGraphiteTargets = function(targets) {
                 throw "Wrong or bad server info!"
             }
             connectionStr = addr.replace(/\./g,'_')+(port?"."+port:'')
+
             serverInfo = "Server: "+addr+(port?(":"+port):"")
             $('#currentServer').text(serverInfo)
 
@@ -626,7 +628,7 @@ generateDataURL = function(targets, annotator_target, max_data_points,overridepe
   }
    //  console.log("overide ",p," for ",targets)
 
-    var url =  "" + graphite_url + "/render?from=-" + p + "minutes&" + data_targets + annotator_target + "&maxDataPoints=" + max_data_points + "&format=json&jsonp=?";
+  var url =  "" + graphite_url + "/render?from=-" + p + "minutes&" + data_targets + annotator_target + "&maxDataPoints=" + max_data_points + "&format=json&jsonp=?";
   console.log(url)
   return url
 };
@@ -637,6 +639,14 @@ generateEventsURL = function(event_tags) {
   jsonp = window.json_fallback ? '' : "&jsonp=?";
   return "" + graphite_url + "/events/get_data?from=-" + period + "minutes" + tags + jsonp;
 };
+
+var generateBoxNameModifier = function(strs) {
+    var s = strs[0]
+    s=s.replace(/\(1\)/g, connectionStr)
+    strs[0]=s
+    console.log(strs)
+    return strs
+}
 
 createGraph = function(anchor, metric) {
 
@@ -1118,6 +1128,7 @@ function getGaugeInstance(obj, anchor, metric) {
         strokeWidth: metric.stroke_width,
         overridePeriod : metric.overridePeriod,
         dataURL: generateDataURL(metric.target || metric.targets),
+        BoxNameModifier: generateBoxNameModifier(metric.BoxNameModifier||[""]),
         size: metric.size,
 
         onRefresh: function(transport) {

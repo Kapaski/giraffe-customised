@@ -156,7 +156,7 @@ function Box(placeholderName, configuration) {
             tr.append("td")
                 .text(function (d) {
                 return d.name
-            })
+            }).attr("class","box-td")
             tr.append("td")
                 .attr("class","box-td")
                 .text(function (d) {

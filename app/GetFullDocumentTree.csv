@@ -1,0 +1,949 @@
+document_id,document_name,type,folder_id,path,level
+3,Welcome,0,2,Home,1
+4,Stock text,4,2,Home,1
+5,Reusable content,4,2,Home,1
+14,Templates,4,2,Home,1
+83,SupportPoint 8.2 Help,4,2,Home,1
+517,Panviva Styles & Standards,4,2,Home,1
+529,AnthonyTest,4,2,Home,1
+532,Eugene,4,2,Home,1
+540,Antonius,4,2,Home,1
+549,Linda,4,2,Home,1
+575,E2E001_SZg,4,2,Home,1
+578,g,4,2,Home,1
+583,TOSCA Documents,4,2,Home,1
+623,ESB TEST,4,2,Home,1
+629,Rohit,4,2,Home,1
+634,Viva Bank,4,2,Home,1
+642,Training Source,4,2,Home,1
+650,Deepak Malik,4,2,Home,1
+679,Annette,4,2,Home,1
+688,Rod,4,2,Home,1
+716,Mobile,4,2,Home,1
+726,testing,4,2,Home,1
+743,testunderHome,0,2,Home,1
+753,lz,4,2,Home,1
+783,EDITOR,4,2,Home,1
+815,5 Tab Template,0,2,Home,1
+1031,Katerina,4,2,Home,1
+1040,Kumar,4,2,Home,1
+1062,Test folder for Review,4,2,Home,1
+1184,Peters,4,2,Home,1
+1202,Tuong Test,4,2,Home,1
+1210,Just an empty folder,4,2,Home,1
+1211,Another Empty Folder,4,2,Home,1
+1220,EmptyFolder,4,2,Home,1
+6,Complete the following fields,0,4,Home/Stock text,2
+7,Choose the next step,0,4,Home/Stock text,2
+8,Follow the menu path above,0,4,Home/Stock text,2
+9,Are there any business rules?,0,4,Home/Stock text,2
+10,Are there any guidelines?,0,4,Home/Stock text,2
+11,Inline call script,0,4,Home/Stock text,2
+12,Secondary window call script,0,4,Home/Stock text,2
+13,Popup call script,0,4,Home/Stock text,2
+15,Overview,1,14,Home/Templates,2
+16,Procedure - 3 tab,0,14,Home/Templates,2
+17,Procedure - 5 tab,0,14,Home/Templates,2
+18,Policy,1,14,Home/Templates,2
+19,Under construction tools,0,14,Home/Templates,2
+20,Under construction hard hat,0,14,Home/Templates,2
+21,Processes,4,14,Home/Templates,2
+25,Navigational aids,4,14,Home/Templates,2
+30,Welcome screens,4,14,Home/Templates,2
+39,Miscellaneous,4,14,Home/Templates,2
+49,Template help,4,14,Home/Templates,2
+84,About SupportPoint 8.2,0,83,Home/SupportPoint 8.2 Help,2
+85,SupportPoint 8.2 Viewer ,4,83,Home/SupportPoint 8.2 Help,2
+134,SupportPoint 8.2 Web Viewer,4,83,Home/SupportPoint 8.2 Help,2
+184,SupportPoint 8.2 Author,4,83,Home/SupportPoint 8.2 Help,2
+439,SupportPoint 8.2 Content Converter,4,83,Home/SupportPoint 8.2 Help,2
+446,SupportPoint 8.2 Portal,4,83,Home/SupportPoint 8.2 Help,2
+518,Content development guidelines,1,517,Home/Panviva Styles & Standards,2
+519,Style guidelines,1,517,Home/Panviva Styles & Standards,2
+520,Word list,0,517,Home/Panviva Styles & Standards,2
+521,Process flows,4,517,Home/Panviva Styles & Standards,2
+530,Anthony &amp; Test1,0,529,Home/AnthonyTest,2
+531,test,3,529,Home/AnthonyTest,2
+533,Test1,0,532,Home/Eugene,2
+534,Test2,1,532,Home/Eugene,2
+535,Test3,0,532,Home/Eugene,2
+536,CoolPolicy,1,532,Home/Eugene,2
+537,Test4,0,532,Home/Eugene,2
+538,Test5,0,532,Home/Eugene,2
+539,SecomdWind,0,532,Home/Eugene,2
+541,Policy,1,540,Home/Antonius,2
+545,Presentation,0,540,Home/Antonius,2
+550,TOP2/3,0,549,Home/Linda,2
+551,TOPLarge,0,549,Home/Linda,2
+552,Left2/3,1,549,Home/Linda,2
+553,Left Full,1,549,Home/Linda,2
+554,TOP1/3,0,549,Home/Linda,2
+573,Imported,4,5,Home/Reusable content,2
+574,Print ,0,549,Home/Linda,2
+576,E2E001_Document_BRU,0,575,Home/E2E001_SZg,2
+579,g,0,578,Home/g,2
+582,Quicklinks,0,575,Home/E2E001_SZg,2
+584,General,4,583,Home/TOSCA Documents,2
+585,For Copy,4,583,Home/TOSCA Documents,2
+586,For Localisation,4,583,Home/TOSCA Documents,2
+587,For Branch,4,583,Home/TOSCA Documents,2
+588,For Branch Localisation,4,583,Home/TOSCA Documents,2
+589,For Reusable Content,4,583,Home/TOSCA Documents,2
+590,For Side Window,4,583,Home/TOSCA Documents,2
+591,For Templates,4,583,Home/TOSCA Documents,2
+592,For Welcome,4,583,Home/TOSCA Documents,2
+615,Run Viewer,3,578,Home/g,2
+619,AnnetteTest,0,578,Home/g,2
+620,Annette Viewer Document,0,578,Home/g,2
+624,Test resuable content,0,623,Home/ESB TEST,2
+625,esb resuale content,5,5,Home/Reusable content,2
+626,esb re2,5,5,Home/Reusable content,2
+631,Train,0,532,Home/Eugene,2
+632,Train0,0,532,Home/Eugene,2
+635,Clear Platinum,0,634,Home/Viva Bank,2
+636,Australia Velocity High Flyer Card,0,634,Home/Viva Bank,2
+637,Variable Rate Personal Loan,0,634,Home/Viva Bank,2
+638,Car Loans,2,634,Home/Viva Bank,2
+639,Home Loan,0,634,Home/Viva Bank,2
+641,Left2/3,5,623,Home/ESB TEST,2
+643,doc1,0,642,Home/Training Source,2
+644,doc2,0,642,Home/Training Source,2
+646,TrainTest,0,532,Home/Eugene,2
+651,QA Team Folder,4,650,Home/Deepak Malik,2
+682,Annette Test1 (QL),0,679,Home/Annette,2
+685,test 1,0,529,Home/AnthonyTest,2
+686,rod test,5,5,Home/Reusable content,2
+687,Rod test,0,517,Home/Panviva Styles & Standards,2
+689,English,0,688,Home/Rod,2
+691,Test en,0,688,Home/Rod,2
+693,test1,0,688,Home/Rod,2
+698,Training00,0,549,Home/Linda,2
+699,Training01,0,549,Home/Linda,2
+700,Training02_single question,0,549,Home/Linda,2
+701,Training03,0,549,Home/Linda,2
+703,Training05,1,549,Home/Linda,2
+705,training07,0,549,Home/Linda,2
+707,dd,1,529,Home/AnthonyTest,2
+708,1version,0,529,Home/AnthonyTest,2
+709,1version2,0,529,Home/AnthonyTest,2
+710,Training 1,0,688,Home/Rod,2
+711,Training 2,0,688,Home/Rod,2
+712,Training 3,0,549,Home/Linda,2
+713,Training 4,0,549,Home/Linda,2
+714,Training 5,0,549,Home/Linda,2
+715,SPUI445,0,634,Home/Viva Bank,2
+717,ASP.NET MVC 4,0,716,Home/Mobile,2
+719,Annettes Test (QL),2,679,Home/Annette,2
+720,QL Grid Test,1,679,Home/Annette,2
+722,Annette Test,0,679,Home/Annette,2
+723,Display in Document,2,679,Home/Annette,2
+724,LastDocWithEmptyRC,0,532,Home/Eugene,2
+727,test,0,529,Home/AnthonyTest,2
+729,test2,0,529,Home/AnthonyTest,2
+754,doc1,0,753,Home/lz,2
+754,doc1,0,1040,Home/Kumar,2
+755,test paragraph,1,532,Home/Eugene,2
+769,doc2,0,753,Home/lz,2
+771,Link,0,529,Home/AnthonyTest,2
+772,3rd party SupportPoint licensing information,3,688,Home/Rod,2
+773,rod training 4,0,688,Home/Rod,2
+775,NewDoc,1,532,Home/Eugene,2
+776,DocForTestFolder,0,532,Home/Eugene,2
+782,doc3,0,753,Home/lz,2
+786,test,5,5,Home/Reusable content,2
+787,test2,5,529,Home/AnthonyTest,2
+788,Test Document1,0,679,Home/Annette,2
+789,incomplete,1,688,Home/Rod,2
+790,g,0,679,Home/Annette,2
+792,Process Documnet,2,549,Home/Linda,2
+793,Image Map,0,679,Home/Annette,2
+794,test non release,0,529,Home/AnthonyTest,2
+795,big image,0,532,Home/Eugene,2
+796,test editor,0,529,Home/AnthonyTest,2
+798,doc4,0,753,Home/lz,2
+799,Service Center FAQ,0,688,Home/Rod,2
+800,Welcome to Viva Bank - Contact Centre,0,688,Home/Rod,2
+802,Side window,2,650,Home/Deepak Malik,2
+803,doc5,0,753,Home/lz,2
+806,Test task flow,0,688,Home/Rod,2
+807,Rohit Top 1/3,0,549,Home/Linda,2
+808,Rohit Top 1/3 without history,0,549,Home/Linda,2
+810,doc6,0,753,Home/lz,2
+811,lz_test,5,5,Home/Reusable content,2
+812,5 top tabs,0,688,Home/Rod,2
+813,doc7,0,753,Home/lz,2
+814,QL Grid Test 1,0,679,Home/Annette,2
+816,5+1 Tab Template,0,549,Home/Linda,2
+817,3Tabs,0,549,Home/Linda,2
+819,doc8,0,753,Home/lz,2
+820,TestingSide,2,540,Home/Antonius,2
+821,5 Tab Template,0,549,Home/Linda,2
+835,5 tab,0,688,Home/Rod,2
+836,localised test1,0,688,Home/Rod,2
+849,rod trial,5,5,Home/Reusable content,2
+854,Template LeftTab,1,549,Home/Linda,2
+855,CharactersĄÇĐĚ,0,679,Home/Annette,2
+856,Quick,0,532,Home/Eugene,2
+857,Test Document Table,1,679,Home/Annette,2
+858,New Document Table,1,679,Home/Annette,2
+860,test 222,0,529,Home/AnthonyTest,2
+861,EmptyQuick,0,532,Home/Eugene,2
+862,asdf,0,529,Home/AnthonyTest,2
+863,RC,5,540,Home/Antonius,2
+866,EmptyRC,5,532,Home/Eugene,2
+869,Format/Style document,0,532,Home/Eugene,2
+871,ImageMap,5,5,Home/Reusable content,2
+872,emptyu,5,5,Home/Reusable content,2
+873,doc9,1,753,Home/lz,2
+876,doc6,0,679,Home/Annette,2
+881,Katerina's rc doc,5,5,Home/Reusable content,2
+882,Katerina Rc doc 2,5,5,Home/Reusable content,2
+884,doc6,0,532,Home/Eugene,2
+894,ATM Outage,0,634,Home/Viva Bank,2
+910,UnreleasedRC,5,532,Home/Eugene,2
+911,Format/Style document,1,549,Home/Linda,2
+913,ATM Maintenance,4,634,Home/Viva Bank,2
+917,1/3 to left,1,532,Home/Eugene,2
+918,geoff,0,679,Home/Annette,2
+919,test,0,529,Home/AnthonyTest,2
+920,Test Document,1,679,Home/Annette,2
+922,doc10,0,753,Home/lz,2
+923,doc11,0,753,Home/lz,2
+924,test,2,753,Home/lz,2
+925,2 RC,0,532,Home/Eugene,2
+928,Another new document,0,679,Home/Annette,2
+932,doc12,0,753,Home/lz,2
+934,latest,2,532,Home/Eugene,2
+936,test_920,1,532,Home/Eugene,2
+937,TempWelcome,0,532,Home/Eugene,2
+939,Quick,0,532,Home/Eugene,2
+940,topToSide,1,532,Home/Eugene,2
+941,LeftDoc,1,532,Home/Eugene,2
+945,Test folder,4,650,Home/Deepak Malik,2
+951,Top Tabs 1/3,0,540,Home/Antonius,2
+952,Top Tabs 2/3,0,540,Home/Antonius,2
+953,Top Tabs Full,0,540,Home/Antonius,2
+954,Left Tabs 2/3,1,540,Home/Antonius,2
+955,Left Tabs Full,1,540,Home/Antonius,2
+959,geoff 2,0,679,Home/Annette,2
+960,test,0,529,Home/AnthonyTest,2
+963,FailedDoc,0,532,Home/Eugene,2
+965,Quicklinks,0,679,Home/Annette,2
+966,Quicklinks,0,679,Home/Annette,2
+967,Folder 1,4,726,Home/testing,2
+980,Folder 2,4,726,Home/testing,2
+983,ImageMap,0,532,Home/Eugene,2
+989,Paragraph,0,783,Home/EDITOR,2
+990,Headers,0,783,Home/EDITOR,2
+991,Verbatim,0,783,Home/EDITOR,2
+992,Lists,0,783,Home/EDITOR,2
+993,Sections,0,783,Home/EDITOR,2
+994,Tasks,0,783,Home/EDITOR,2
+995,Section and Tasks,0,783,Home/EDITOR,2
+996,Bold Italic Buttonize,0,783,Home/EDITOR,2
+997,subhead,0,549,Home/Linda,2
+998,geoff,0,650,Home/Deepak Malik,2
+999,Alignment Right,0,783,Home/EDITOR,2
+1000,Reusable Conetent,0,783,Home/EDITOR,2
+1001,Empty,0,783,Home/EDITOR,2
+1007,Another new document_1,0,679,Home/Annette,2
+1010,General Document Unreleased,3,679,Home/Annette,2
+1011,General Document Released,3,679,Home/Annette,2
+1016,Image Map,2,679,Home/Annette,2
+1017,R A Top Tabs 1/3,0,629,Home/Rohit,2
+1018,RA Test,0,629,Home/Rohit,2
+1019,Rohit - Rev & App Test # 1,0,629,Home/Rohit,2
+1020,Rohit - Rev & App Test # 2,0,629,Home/Rohit,2
+1021,RA Test Top 1/3,0,540,Home/Antonius,2
+1022,quicklink,0,532,Home/Eugene,2
+1023,RC standalone,5,688,Home/Rod,2
+1027,High,0,532,Home/Eugene,2
+1028,empty doc,0,529,Home/AnthonyTest,2
+1029,QL doc,0,1031,Home/Katerina,2
+1030,Trainging document in 5 Tab template,0,549,Home/Linda,2
+1032,D1 - links,0,1031,Home/Katerina,2
+1033,Annette Test,1,679,Home/Annette,2
+1034,Secondary Window Test,4,549,Home/Linda,2
+1037,Test diff,0,1031,Home/Katerina,2
+1038,diff1,0,1031,Home/Katerina,2
+1039,blank2,0,529,Home/AnthonyTest,2
+1041,Kumar Welcome Blank,0,1040,Home/Kumar,2
+1042,5Tab+1 without History,0,549,Home/Linda,2
+1044,Kumar two sections,0,1040,Home/Kumar,2
+1045,test3,0,529,Home/AnthonyTest,2
+1046,Kumar Blank test,0,1040,Home/Kumar,2
+1047,Kumar Training Test,0,1040,Home/Kumar,2
+1048,Blank,0,726,Home/testing,2
+1049,Kumar Feedback test,0,1040,Home/Kumar,2
+1052,test Blank Table,0,529,Home/AnthonyTest,2
+1055,Popup Test,1,679,Home/Annette,2
+1058,QL Grid Test1,1,679,Home/Annette,2
+1059,Feedback test,0,1040,Home/Kumar,2
+1060,Numbers & Tables,1,679,Home/Annette,2
+1061,Kumar Link Search test,0,1040,Home/Kumar,2
+1063,Format/Style document,0,1062,Home/Test folder for Review,2
+1115,PolicyFromTemplate,1,629,Home/Rohit,2
+1116,titleABC,0,532,Home/Eugene,2
+1117,All textels document,0,650,Home/Deepak Malik,2
+1169,test1,0,1062,Home/Test folder for Review,2
+1172,Annette Test Section,1,679,Home/Annette,2
+1173,Kumar Image Test 1,0,1040,Home/Kumar,2
+1174,Has RC,0,629,Home/Rohit,2
+1175,Another new document_2,0,679,Home/Annette,2
+1177,RC document,5,650,Home/Deepak Malik,2
+1178,Doc No Feedback,0,629,Home/Rohit,2
+1179,Kumar Side Window,2,1040,Home/Kumar,2
+1181,Unreleased,4,532,Home/Eugene,2
+1183,Kumar Print Training,0,1040,Home/Kumar,2
+1185,Doc1,0,1184,Home/Peters,2
+1186,SPUI-1557,0,629,Home/Rohit,2
+1187,Tables,0,679,Home/Annette,2
+1188,Search doc,0,1031,Home/Katerina,2
+1189,Unreleased Reusable Content,5,679,Home/Annette,2
+1190,Not released,4,1031,Home/Katerina,2
+1192,Review doc with reusable content,0,1031,Home/Katerina,2
+1193,Tables 1,0,679,Home/Annette,2
+1194,Yikes,0,629,Home/Rohit,2
+1195,Review reus 1,0,1031,Home/Katerina,2
+1196,Test Popup,0,629,Home/Rohit,2
+1197,SPUI-1053.No Changes,1,629,Home/Rohit,2
+1198,SPUI-1053.1,1,629,Home/Rohit,2
+1199,SPUI-1053.2,1,629,Home/Rohit,2
+1203,Empty folder,4,1202,Home/Tuong Test,2
+1204,doc1,0,1202,Home/Tuong Test,2
+1205,doc2,0,1202,Home/Tuong Test,2
+1217,Grid Images,1,679,Home/Annette,2
+1218,Format/Style document,0,650,Home/Deepak Malik,2
+1223,NewT14,0,532,Home/Eugene,2
+1224,Table,0,1031,Home/Katerina,2
+1225,NewT16,0,532,Home/Eugene,2
+1226,NewT17,0,532,Home/Eugene,2
+1227,QuicklinkswithLargeImage,0,549,Home/Linda,2
+1228,Test Sec Win List,0,629,Home/Rohit,2
+1229,Quick links,0,1031,Home/Katerina,2
+1230,empty with unreleased,4,1202,Home/Tuong Test,2
+1232,Kumar QL grid,0,1040,Home/Kumar,2
+1233,Test,0,629,Home/Rohit,2
+1234,Template Test,0,629,Home/Rohit,2
+22,Process flow,2,21,Home/Templates/Processes,3
+23,Process template - Visio,3,21,Home/Templates/Processes,3
+24,Process template - PowerPoint,3,21,Home/Templates/Processes,3
+26,Navigation map,2,25,Home/Templates/Navigational aids,3
+27,Our business,2,25,Home/Templates/Navigational aids,3
+28,Switchboard,2,25,Home/Templates/Navigational aids,3
+29,Welcome & Switchboard templates - PowerPoint,3,25,Home/Templates/Navigational aids,3
+29,Welcome & Switchboard templates - PowerPoint,3,30,Home/Templates/Welcome screens,3
+31,Welcome,0,30,Home/Templates/Welcome screens,3
+32,Content communications,4,30,Home/Templates/Welcome screens,3
+40,Contact list,1,39,Home/Templates/Miscellaneous,3
+41,Demonstration criteria,0,39,Home/Templates/Miscellaneous,3
+42,FAQs,1,39,Home/Templates/Miscellaneous,3
+43,Glossary,1,39,Home/Templates/Miscellaneous,3
+44,Quick links,0,39,Home/Templates/Miscellaneous,3
+45,Quick reference,0,39,Home/Templates/Miscellaneous,3
+46,Rules and guidelines,1,39,Home/Templates/Miscellaneous,3
+47,Troubleshooting,0,39,Home/Templates/Miscellaneous,3
+48,Reference based training,1,39,Home/Templates/Miscellaneous,3
+50,Using the Overview template,0,49,Home/Templates/Template help,3
+51,Using the Procedure - 3 tab template,0,49,Home/Templates/Template help,3
+52,Using the Procedure - 5 tab template,0,49,Home/Templates/Template help,3
+53,Using the Policy template,0,49,Home/Templates/Template help,3
+54,Processes,4,49,Home/Templates/Template help,3
+56,Navigational aids,4,49,Home/Templates/Template help,3
+60,Welcome screens,4,49,Home/Templates/Template help,3
+69,Miscellaneous,4,49,Home/Templates/Template help,3
+86,Viewer - overview,1,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+87,Content - quick reference,0,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+88,Functions - quick reference,0,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+89,Personal settings - quick reference,0,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+90,High Availability Viewer - quick reference,0,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+91,Content,4,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+97,Functions,4,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+110,Personal settings,4,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+116,High Availability,4,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+122,Sample - Goods receipting,4,85,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer ,3
+135,What's new in V8.0 ,1,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+136,Web Viewer - overview,1,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+137,Content - quick reference,0,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+138,Functions - quick reference,0,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+139,Personal settings - quick reference,0,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+140,High Availability Web Viewer - quick reference,0,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+141,Content,4,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+147,Functions,4,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+160,Personal settings,4,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+166,High Availability,4,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+172,Sample - Goods receipting,4,134,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer,3
+185,Author - overview,1,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+186,SupportPoint glossary,1,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+187,Quick reference,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+216,Get started,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+222,Documents view,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+334,Editor,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+364,Image view,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+387,Users & roles view,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+419,Online Learning,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+428,Workflow,4,184,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author,3
+440,Content Converter - overview,1,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+441,Content converter example,2,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+442,SupportPoint Map Editor,2,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+443,Content Converter window,2,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+444,Convert content,0,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+445,View log file,0,439,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Content Converter,3
+447,Portal - overview,1,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+448,Configuration - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+449,Context sensitive help - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+450,Maintenance - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+451,Tools - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+452,Server - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+453,Downloads - quick reference,0,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+454,Get started,4,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+459,Reports,4,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+462,Administration,4,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+504,Server,4,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+511,Downloads,4,446,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal,3
+522,Levels of process flow diagrams,2,521,Home/Panviva Styles & Standards/Process flows,3
+523,High-level process flow,2,521,Home/Panviva Styles & Standards/Process flows,3
+524,Single-level process flow,2,521,Home/Panviva Styles & Standards/Process flows,3
+525,Multi-level process flow,2,521,Home/Panviva Styles & Standards/Process flows,3
+526,Source,4,521,Home/Panviva Styles & Standards/Process flows,3
+555,Reuse1,5,573,Home/Reusable content/Imported,3
+593,Files,4,584,Home/TOSCA Documents/General,3
+594,Target,4,585,Home/TOSCA Documents/For Copy,3
+595,Source,4,586,Home/TOSCA Documents/For Localisation,3
+596,Source,4,587,Home/TOSCA Documents/For Branch,3
+597,Source1,4,588,Home/TOSCA Documents/For Branch Localisation,3
+598,Source2,4,588,Home/TOSCA Documents/For Branch Localisation,3
+599,Source,4,589,Home/TOSCA Documents/For Reusable Content,3
+600,Source,4,590,Home/TOSCA Documents/For Side Window,3
+606,E2E009_Localisation_Child_rmK,1,586,Home/TOSCA Documents/For Localisation,3
+608,E2E002_Procedure_For_Link_uZY,0,592,Home/TOSCA Documents/For Welcome,3
+609,E2E002_WelcomeDoc1_KGY,0,592,Home/TOSCA Documents/For Welcome,3
+610,E2E002_WelcomeFolder1_UPV,4,592,Home/TOSCA Documents/For Welcome,3
+612,E2E002_StockText_Nqb,0,592,Home/TOSCA Documents/For Welcome,3
+613,E2E002_Document_nlh,0,592,Home/TOSCA Documents/For Welcome,3
+617,AUTO_ReusableContentForValidation,5,573,Home/Reusable content/Imported,3
+652,Different document types,4,651,Home/Deepak Malik/QA Team Folder,3
+665,Format/Style document,0,651,Home/Deepak Malik/QA Team Folder,3
+666,RC document,5,651,Home/Deepak Malik/QA Team Folder,3
+667,Quicklinks sample,0,651,Home/Deepak Malik/QA Team Folder,3
+868,RC document,5,573,Home/Reusable content/Imported,3
+870,RC document,5,573,Home/Reusable content/Imported,3
+877,RC document,5,573,Home/Reusable content/Imported,3
+885,RC document,5,573,Home/Reusable content/Imported,3
+914,4000T,0,913,Home/Viva Bank/ATM Maintenance,3
+929,RC document,5,573,Home/Reusable content/Imported,3
+946,doc1,0,945,Home/Deepak Malik/Test folder,3
+961,doc_review,0,980,Home/testing/Folder 2,3
+962,doc_approval,1,980,Home/testing/Folder 2,3
+968,From Template Procedure document,0,967,Home/testing/Folder 1,3
+969,From Template Process document,0,967,Home/testing/Folder 1,3
+970,Side window type document,2,967,Home/testing/Folder 1,3
+971,Blank top tab 1/3 document,0,967,Home/testing/Folder 1,3
+972,Blank tob tab 2/3 document,0,967,Home/testing/Folder 1,3
+973,Blank top tab full screen,0,967,Home/testing/Folder 1,3
+974,Blank left tab 2/3,1,967,Home/testing/Folder 1,3
+975,Blank left tab full screen,1,967,Home/testing/Folder 1,3
+976,Blank type with diff alignments,0,967,Home/testing/Folder 1,3
+977,Blank document with all diff styles,0,967,Home/testing/Folder 1,3
+978,Copy type document,0,967,Home/testing/Folder 1,3
+979,Localised type document,0,967,Home/testing/Folder 1,3
+981,doc1,0,980,Home/testing/Folder 2,3
+984,doc_approval_2,0,980,Home/testing/Folder 2,3
+985,doc_review_2,0,980,Home/testing/Folder 2,3
+986,909,0,980,Home/testing/Folder 2,3
+987,741,0,980,Home/testing/Folder 2,3
+988,648,0,980,Home/testing/Folder 2,3
+1004,RC document,5,573,Home/Reusable content/Imported,3
+1006,RC document,5,573,Home/Reusable content/Imported,3
+1008,RC document,5,573,Home/Reusable content/Imported,3
+1009,1042,0,980,Home/testing/Folder 2,3
+1014,Link search test,0,980,Home/testing/Folder 2,3
+1015,Unreleased reusable content,5,651,Home/Deepak Malik/QA Team Folder,3
+1035,Secondary window1,0,1034,Home/Linda/Secondary Window Test,3
+1036,Secondary Window 2,0,1034,Home/Linda/Secondary Window Test,3
+1050,Training,0,967,Home/testing/Folder 1,3
+1053,1243,0,980,Home/testing/Folder 2,3
+1054,1243-2,0,980,Home/testing/Folder 2,3
+1056,1120,0,980,Home/testing/Folder 2,3
+1057,1113,0,980,Home/testing/Folder 2,3
+1064,rc9,5,573,Home/Reusable content/Imported,3
+1118,rc9,5,573,Home/Reusable content/Imported,3
+1176,RC document,5,573,Home/Reusable content/Imported,3
+1182,cool doc,0,1181,Home/Eugene/Unreleased,3
+1191,Unreleased ekaterina 1,1,1190,Home/Katerina/Not released,3
+1219,rc9,5,573,Home/Reusable content/Imported,3
+1231,unreleased,5,1230,Home/Tuong Test/empty with unreleased,3
+33,Alerts,0,32,Home/Templates/Welcome screens/Content communications,4
+34,Archived alerts,0,32,Home/Templates/Welcome screens/Content communications,4
+35,Content updates,0,32,Home/Templates/Welcome screens/Content communications,4
+36,Archived content updates,0,32,Home/Templates/Welcome screens/Content communications,4
+37,New content,0,32,Home/Templates/Welcome screens/Content communications,4
+38,Archived new content,0,32,Home/Templates/Welcome screens/Content communications,4
+55,Using the Process flow template,0,54,Home/Templates/Template help/Processes,4
+57,Using the Navigation map template,0,56,Home/Templates/Template help/Navigational aids,4
+58,Using the Our business template,0,56,Home/Templates/Template help/Navigational aids,4
+59,Using the Switchboard template,0,56,Home/Templates/Template help/Navigational aids,4
+61,Using the Welcome template,0,60,Home/Templates/Template help/Welcome screens,4
+62,Content communications,4,60,Home/Templates/Template help/Welcome screens,4
+70,Using the Contact list template,0,69,Home/Templates/Template help/Miscellaneous,4
+71,Using the Demonstration criteria template,0,69,Home/Templates/Template help/Miscellaneous,4
+72,Using the FAQs template,0,69,Home/Templates/Template help/Miscellaneous,4
+73,Using the Glossary template,0,69,Home/Templates/Template help/Miscellaneous,4
+74,Using the Quick links template,0,69,Home/Templates/Template help/Miscellaneous,4
+75,Using the Quick reference template,0,69,Home/Templates/Template help/Miscellaneous,4
+76,Using the Rules and guidelines template,0,69,Home/Templates/Template help/Miscellaneous,4
+77,Using the Troubleshooting template,0,69,Home/Templates/Template help/Miscellaneous,4
+78,Using the Reference based training template,0,69,Home/Templates/Template help/Miscellaneous,4
+79,Side window image dimensions,2,69,Home/Templates/Template help/Miscellaneous,4
+80,Customising your templates with images,1,69,Home/Templates/Template help/Miscellaneous,4
+81,Icons in use,0,69,Home/Templates/Template help/Miscellaneous,4
+92,Display Welcome page,0,91,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Content,4
+93,Display Welcome page update,0,91,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Content,4
+94,Navigate folder structure & content,0,91,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Content,4
+95,Navigate Online Learning document,0,91,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Content,4
+96,Display popup, link & secondary window,0,91,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Content,4
+98,Search content - Viewer,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+99,Maintain favorites folder,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+100,Send feedback,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+101,Maintain notifications,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+102,Maintain note,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+103,Display navigation history,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+104,Print and copy content,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+105,Copy document location,0,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+106,Review and approve documents,4,97,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions,4
+111,Log on to Viewer as another user,0,110,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Personal settings,4
+112,Maintain user details,0,110,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Personal settings,4
+113,Change password,0,110,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Personal settings,4
+114,Maintain Viewer display,0,110,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Personal settings,4
+115,Change language view,0,110,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Personal settings,4
+117,High Availability - overview,1,116,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /High Availability,4
+118,Synchronize content,0,116,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /High Availability,4
+119,View Synchronization Status,0,116,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /High Availability,4
+120,Delete downloaded content,0,116,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /High Availability,4
+121,Repair search index,0,116,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /High Availability,4
+123,Requisitioning - top-level process,2,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+124,Goods receipt - subprocess,2,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+125,Create goods receipt (known PO),0,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+126,Create goods receipt (unknown PO),0,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+127,Return goods to vendor,0,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+128,Simulations,4,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+131,Sample screens,4,122,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting,4
+142,Display Welcome page,0,141,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Content,4
+143,Display Welcome page update,0,141,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Content,4
+144,Navigate folder structure & content,0,141,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Content,4
+145,Navigate Online Learning document,0,141,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Content,4
+146,Display popup, link & secondary window,0,141,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Content,4
+148,Search content - Web Viewer,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+149,Maintain favorites folder,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+150,Send feedback,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+151,Maintain notifications,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+152,Maintain note,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+153,Display navigation history,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+154,Print and copy content,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+155,Copy document location,0,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+156,Review and approve documents,4,147,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions,4
+161,Log on to Web Viewer as another user,0,160,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Personal settings,4
+162,Maintain user details,0,160,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Personal settings,4
+163,Change password,0,160,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Personal settings,4
+164,Maintain Web Viewer display,0,160,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Personal settings,4
+165,Change language view,0,160,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Personal settings,4
+167,High Availability - overview,1,166,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/High Availability,4
+168,Synchronize content,0,166,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/High Availability,4
+169,View Synchronization Status,0,166,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/High Availability,4
+170,Delete downloaded content,0,166,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/High Availability,4
+171,Repair search index,0,166,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/High Availability,4
+173,Requisitioning - top-level process,2,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+174,Goods receipt - subprocess,2,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+175,Create goods receipt (known PO),0,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+176,Create goods receipt (unknown PO),0,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+177,Return goods to vendor,0,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+178,Simulations,4,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+181,Sample screens,4,172,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting,4
+188,Get started - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+189,Document content - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+190,Online Learning - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+191,Localizations - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+192,Branches - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+193,Branch localizations - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+194,Translations - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+195,Content Converter - quick reference,0,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+196,Documents view - quick reference,4,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+204,Editor - quick reference,4,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+209,Images view - quick reference,4,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+212,Users & roles view - quick reference,4,187,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference,4
+217,Launcher & Diagnostics - overview,1,216,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Get started,4
+218,Log on to Author,0,216,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Get started,4
+219,Test server connection,0,216,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Get started,4
+220,Test login details,0,216,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Get started,4
+221,Log out of Author,0,216,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Get started,4
+223,Documents view - overview,1,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+224,Review Documents view icons,0,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+225,Change Folder list view columns,0,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+226,Document folders,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+247,Documents,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+265,Import & export content,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+272,Content permissions & ownership,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+280,Feedback,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+283,Notifications,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+286,Database management,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+295,Localizations,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+300,Branches,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+302,Branch Localizations,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+304,Translations,4,222,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view,4
+318,Manage Editor tools,0,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+335,Review Workflow,2,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+336,Editor - overview,1,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+337,Review Editor tools,0,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+338,Document content,4,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+349,Document layers,4,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+355,Image maps,4,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+362,Save & release,4,334,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor,4
+365,Image view - overview,1,364,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view,4
+366,Image folders,4,364,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view,4
+374,Images,4,364,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view,4
+388,Users and roles view - overview,1,387,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view,4
+389,Users,4,387,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view,4
+407,Roles,4,387,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view,4
+414,Variables,4,387,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view,4
+420,Online Learning - overview,1,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+421,Create Online Learning folder,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+422,Create Online Learning document,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+423,Create training text,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+424,Create training questions,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+425,Assign training document properties,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+426,Assign course to users,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+427,Delete training results,0,419,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Online Learning,4
+429,Workflow - overview,1,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+430,Manage workflows,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+431,Create workflow,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+432,Apply workflow,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+433,Save document for review,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+434,View reviewer/approver comments,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+435,Check workflow status,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+436,Save document for approval,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+437,Schedule document for review,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+438,Maintain scheduled review,0,428,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Workflow,4
+455,Log on to Portal,0,454,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Get started,4
+456,Log out of Portal,0,454,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Get started,4
+457,Review Portal map,0,454,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Get started,4
+458,Switch Portal language view,0,454,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Get started,4
+460,Reports - overview,1,459,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Reports,4
+461,Run reports,0,459,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Reports,4
+463,Configuration,4,462,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration,4
+478,Context sensitive help,4,462,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration,4
+483,Workflow,4,462,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration,4
+486,Maintenance,4,462,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration,4
+493,Tools,4,462,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration,4
+505,Display server information,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+506,Display session information,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+507,Display license information,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+508,Display license usage information,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+509,Review audit log,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+510,Maintain language settings,0,504,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Server,4
+512,Add Author install for download,0,511,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Downloads,4
+513,Add documentation for download,0,511,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Downloads,4
+514,Download Viewer,0,511,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Downloads,4
+515,Download Web Viewer plugin,0,511,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Downloads,4
+516,Download documentation,0,511,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Downloads,4
+527,Process flow samples,3,526,Home/Panviva Styles & Standards/Process flows/Source,4
+601,General Document 01,0,593,Home/TOSCA Documents/General/Files,4
+602,Copy Document 01,0,594,Home/TOSCA Documents/For Copy/Target,4
+603,E2E009_Overview_For_Copy_vBS,1,595,Home/TOSCA Documents/For Localisation/Source,4
+604,E2E009_StockText_bXi,0,595,Home/TOSCA Documents/For Localisation/Source,4
+605,E2E009_Localisation_Parent_lbM,1,595,Home/TOSCA Documents/For Localisation/Source,4
+607,abcdefghijkl,0,595,Home/TOSCA Documents/For Localisation/Source,4
+611,Welcome,0,610,Home/TOSCA Documents/For Welcome/E2E002_WelcomeFolder1_UPV,4
+616,WS_LeftTabWithReusableContentDocument_fMp,1,593,Home/TOSCA Documents/General/Files,4
+618,WS_WordDocument_cpp,3,593,Home/TOSCA Documents/General/Files,4
+621,WS_Folder_uXk,4,593,Home/TOSCA Documents/General/Files,4
+653,From Template Procedure document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+654,From Template Process document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+655,Side window type document,2,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+656,Blank top tab 1/3 document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+657,Blank tob tab 2/3 document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+658,Blank top tab full screen,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+659,Blank left tab 2/3,1,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+660,Blank left tab full screen,1,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+661,Blank type with diff alignments,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+662,Blank document with all diff styles,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+663,Copy type document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+664,Localised type document,0,652,Home/Deepak Malik/QA Team Folder/Different document types,4
+942,E2E005_SecondaryWindowDocument_lqi,0,593,Home/TOSCA Documents/General/Files,4
+943,E2E005 Workflow65767,0,593,Home/TOSCA Documents/General/Files,4
+947,Test Side Window - Stock Text,2,593,Home/TOSCA Documents/General/Files,4
+63,Using the Alerts template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+64,Using the Archived alerts template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+65,Using the Content updates template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+66,Using the Archived content updates template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+67,Using the New content template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+68,Using the Archived new content template,0,62,Home/Templates/Template help/Welcome screens/Content communications,5
+107,Review and approve - overview,1,106,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions/Review and approve documents,5
+108,Review a document,0,106,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions/Review and approve documents,5
+109,Approve a document,0,106,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Functions/Review and approve documents,5
+129,Goods receipt - show me,3,128,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting/Simulations,5
+130,Goods receipt - try me,3,128,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting/Simulations,5
+132,Goods receipt with PO,3,131,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting/Sample screens,5
+133,Goods receipt without PO,3,131,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Viewer /Sample - Goods receipting/Sample screens,5
+157,Review and approve - overview,1,156,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions/Review and approve documents,5
+158,Review a document,0,156,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions/Review and approve documents,5
+159,Approve a document,0,156,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Functions/Review and approve documents,5
+179,Goods receipt - show me,3,178,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting/Simulations,5
+180,Goods receipt - try me,3,178,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting/Simulations,5
+182,Goods receipt with PO,3,181,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting/Sample screens,5
+183,Goods receipt without PO,3,181,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Web Viewer/Sample - Goods receipting/Sample screens,5
+197,Document folders - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+198,Documents - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+199,Import & export - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+200,Content permissions & ownership - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+201,Feedback - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+202,Notifications - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+203,Database management - quick reference,0,196,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Documents view - quick reference,5
+205,Document layers - quick reference,0,204,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Editor - quick reference,5
+206,Image maps - quick reference,0,204,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Editor - quick reference,5
+207,Save & release - quick reference,0,204,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Editor - quick reference,5
+208,Workflow - quick reference,0,204,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Editor - quick reference,5
+210,Image folders - quick reference,0,209,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Images view - quick reference,5
+211,Images - quick reference,0,209,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Images view - quick reference,5
+213,Users - quick reference,0,212,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Users & roles view - quick reference,5
+214,Roles - quick reference,0,212,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Users & roles view - quick reference,5
+215,Variables - quick reference,0,212,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Quick reference/Users & roles view - quick reference,5
+227,Document folders - overview,1,226,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders,5
+228,Create document folder,4,226,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders,5
+231,Localize document folder,0,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+232,Branch document folder,0,300,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branches,5
+233,Branch localize document folder,0,302,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branch Localizations,5
+234,Manage document folder,4,226,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders,5
+238,Reinstate orphan,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+244,Manage document folder properties,4,226,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders,5
+248,Documents - overview,1,247,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents,5
+249,Create document,4,247,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents,5
+254,Create reusable content,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+255,Localize document,0,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+256,Branch document,0,300,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branches,5
+257,Branch localize document,0,302,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branch Localizations,5
+258,Manage document,4,247,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents,5
+266,Import & export - overview,1,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+267,Export content to Word,0,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+268,Export content to SupportPoint format,0,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+269,Import external file,0,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+270,Import SupportPoint content,0,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+271,Merge SupportPoint content,0,265,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Import & export content,5
+273,Content permissions & ownership - overview,1,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+274,Maintain document readers,0,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+275,Maintain document writers,0,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+276,Maintain document owners,0,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+276,Maintain document owners,0,280,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Feedback,5
+277,Maintain multiple permissions,0,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+278,Examples,4,272,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership,5
+281,Feedback - overview,1,280,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Feedback,5
+282,Maintain feedback recipients,0,280,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Feedback,5
+284,Notifications - overview,1,283,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Notifications,5
+285,Maintain notifications,0,283,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Notifications,5
+287,Database management - overview,1,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+288,Welcome pages - overview,1,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+289,Display relationships,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+289,Display relationships,0,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+289,Display relationships,0,300,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branches,5
+289,Display relationships,0,302,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branch Localizations,5
+290,Create template,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+291,Create stock text,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+292,Maintain reusable content,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+293,Search documents and folders,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+294,Delete orphans,0,286,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Database management,5
+296,Localizations - overview,1,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+297,Resolve merges,0,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+297,Resolve merges,0,300,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branches,5
+297,Resolve merges,0,302,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branch Localizations,5
+297,Resolve merges,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+298,Examples,4,295,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations,5
+301,Branch - overview,1,300,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branches,5
+303,Branch localizations - overview,1,302,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Branch Localizations,5
+305,Translations - overview,1,304,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations,5
+306,Translations - languages supported,0,304,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations,5
+307,Documents view,4,304,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations,5
+316,Editor,4,304,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations,5
+323,Insert image,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+324,Check document spelling,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+325,Find & replace text & images,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+330,Save document,0,362,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Save & release,5
+331,Release latest version,0,362,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Save & release,5
+332,Display historical versions in Viewer,0,362,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Save & release,5
+333,Revert to previous version,0,362,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Save & release,5
+339,Document content - overview,1,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+340,Maintain numbered lists,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+341,Maintain tables,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+342,Maintain document links,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+343,Maintain document popups,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+344,Insert special character,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+345,Insert stock text,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+346,Insert reusable content,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+347,Maintain reusable content in document,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+348,Maintain user notes,0,338,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document content,5
+350,Document layers - overview,1,349,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document layers,5
+351,Maintain sections,0,349,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document layers,5
+352,Maintain subsections,0,349,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document layers,5
+353,Maintain tasks,0,349,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document layers,5
+354,Maintain secondary windows,0,349,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Document layers,5
+356,Image maps - overview,1,355,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps,5
+357,Maintain image map links,0,355,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps,5
+358,Maintain image map popups,0,355,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps,5
+359,Change/delete image map,0,355,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps,5
+360,Examples,4,355,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps,5
+363,Save & release - overview,1,362,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Save & release,5
+367,Image folders - overview,1,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+368,Display 25 most used images,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+369,Create image folder,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+370,Rename image folder,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+371,Move image folder,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+372,Remove image folder,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+373,Reinstate image/image folder orphan,0,366,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Image folders,5
+375,Images - overview,1,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+376,Snip images,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+377,Import images,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+378,View image properties,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+379,Rename image,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+380,Move image,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+381,Copy image,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+382,Remove image,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+383,Search for an image,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+384,Reinstate image/image folder orphan,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+385,Change display options,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+386,Maintain image properties,0,374,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Image view/Images,5
+390,Users - overview,1,389,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users,5
+391,Create user,4,389,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users,5
+395,Manage user,4,389,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users,5
+403,Manage user properties,4,389,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users,5
+408,Roles - overview,1,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+409,Create custom role,0,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+410,Rename custom role,0,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+411,Delete custom role,0,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+412,Add role to another role,0,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+413,Remove role from another role,0,407,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Roles,5
+415,Variables - overview,1,414,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Variables,5
+416,Display role & user variables,0,414,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Variables,5
+417,Maintain secondary database setting,0,414,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Variables,5
+418,Maintain default database setting,0,414,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Variables,5
+464,Configuration - overview,1,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+465,Maintain security settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+466,Maintain LDAP settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+467,Maintain Active Directory settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+468,Maintain configuration settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+469,Maintain advanced configuration settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+470,Maintain search setup settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+471,Maintain Author settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+472,Maintain Viewer settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+473,Maintain Viewer advanced settings,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+474,Maintain report catalog,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+475,Maintain customized reports,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+476,Export configuration settings to XML,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+477,Import configuration settings from XML,0,463,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Configuration,5
+479,Context sensitive help - overview,1,478,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Context sensitive help,5
+480,Review application for CSH - process,2,478,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Context sensitive help,5
+481,Analyze CSH settings,0,478,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Context sensitive help,5
+481,Analyze CSH settings,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+482,Maintain context sensitive help settings,0,478,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Context sensitive help,5
+484,Workflow settings - overview,1,483,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Workflow,5
+485,Maintain Workflow settings,0,483,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Workflow,5
+487,Upgrade server,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+488,Rebuild indexes,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+489,Restart server,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+490,Audit log archival & cleanup,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+491,Document locks,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+492,Data origin,0,486,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Maintenance,5
+494,Maintain plugins,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+495,Run script,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+496,Manage stylesheets,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+497,Create scheduled task,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+498,Clone database,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+499,Export content to external database,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+500,Import users from file,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+501,Set up custom properties,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+502,Setup HTTPS,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+503,Replicate content,0,493,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Portal/Administration/Tools,5
+622,WS_AutoTEST_Document_Yra,0,621,Home/TOSCA Documents/General/Files/WS_Folder_uXk,5
+224,Review Documents view icons,0,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+225,Change Folder list view columns,0,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+229,Create document folder,0,228,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Create document folder,6
+230,Copy document folder,0,228,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Create document folder,6
+231,Localize document folder,0,228,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Create document folder,6
+232,Branch document folder,0,228,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Create document folder,6
+233,Branch localize document folder,0,228,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Create document folder,6
+235,Reference document folder,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+236,Move documents and folders,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+236,Move documents and folders,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+237,Remove documents and folders,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+237,Remove documents and folders,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+238,Reinstate orphan,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+238,Reinstate orphan,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+239,Sort alphabetically,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+240,Run glossary,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+241,Generate document folder statistics,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+242,Perform global find,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+242,Perform global find,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+243,Perform global find & replace,0,234,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder,6
+243,Perform global find & replace,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+245,Rename document folder,0,244,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder properties,6
+246,Maintain document folder properties,0,244,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Document folders/Manage document folder properties,6
+250,Create blank document,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+251,Create document from template,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+252,Create side window,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+253,Copy document,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+254,Create reusable content,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+255,Localize document,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+256,Branch document,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+257,Branch localize document,0,249,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Create document,6
+259,Rename document,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+260,Reference document,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+261,View document history,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+262,Compare document versions,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+263,Maintain document properties,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+264,Maintain multiple document properties,0,258,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Documents/Manage document,6
+279,Permissions examples,2,278,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Content permissions & ownership/Examples,6
+299,Merge changes example,2,298,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Localizations/Examples,6
+308,Switch language view,0,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+309,Document folders,4,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+311,Documents,4,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+313,Import & export translations,4,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+314,Translation management,4,307,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view,6
+317,Review Editor translation tools,0,316,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor,6
+318,Manage Editor tools,0,316,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor,6
+319,Document content,4,316,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor,6
+326,Image maps,4,316,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor,6
+329,Save & release,4,316,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor,6
+361,Image map hot spots example,2,360,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Editor/Image maps/Examples,6
+392,Create user,0,391,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Create user,6
+393,Import users from file,0,391,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Create user,6
+394,Manage users from CSV file,0,391,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Create user,6
+396,Change user password,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+397,Delete user,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+398,Add users to a role,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+399,Copy user to another role,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+400,Remove user from role,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+401,Export users to CSV file,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+402,Search for a user,0,395,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user,6
+404,Maintain user properties,0,403,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user properties,6
+405,View a user's role membership,0,403,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user properties,6
+406,Maintain role/user notifications,0,403,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Users & roles view/Users/Manage user properties,6
+241,Generate document folder statistics,0,309,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Document folders,7
+261,View document history,0,311,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Documents,7
+262,Compare document versions,0,311,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Documents,7
+267,Export content to Word,0,313,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Import & export translations,7
+269,Import external file,0,313,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Import & export translations,7
+289,Display relationships,0,314,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Translation management,7
+293,Search documents and folders,0,314,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Translation management,7
+310,Translate document folder properties,0,309,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Document folders,7
+312,Translate document properties,0,311,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Documents,7
+315,Maintain phrase memory,0,314,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Documents view/Translation management,7
+315,Maintain phrase memory,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+320,Translate document,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+321,Transcribe document links,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+322,Translate document popups,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+323,Insert image,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+324,Check document spelling,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+325,Find & replace text & images,0,319,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Document content,7
+327,Transcribe image map links,0,326,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Image maps,7
+328,Translate image map popups,0,326,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Image maps,7
+330,Save document,0,329,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Save & release,7
+331,Release latest version,0,329,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Save & release,7
+332,Display historical versions in Viewer,0,329,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Save & release,7
+333,Revert to previous version,0,329,Home/SupportPoint 8.2 Help/SupportPoint 8.2 Author/Documents view/Translations/Editor/Save & release,7

@@ -32,7 +32,7 @@
 
  */
 
-var graphite_url = "http://10.5.250.95:8888";  //"http://192.168.1.7:8888"// enter your graphite url, e.g. http://your.graphite.com
+var graphite_url = "http://10.5.250.142:8888"//"http://10.5.250.95:8888";  // enter your graphite url, e.g. http://your.graphite.com
 
 //This is for overall metrics page, must configure upfront and no dynamic change
 //Add more prefixes for different JVM ports
@@ -160,7 +160,7 @@ var dashboards =
                             },
                             {
                                 "alias": "Heap Memory Usage (avg %)",  // display name for this metric
-                                "target": "divideSeries("+tarprefix_3+".Mule.heap.HeapMemoryUsage.used,"+tarprefix_2+".ActiveMQ.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
+                                "target": "divideSeries("+tarprefix_3+".Mule.heap.HeapMemoryUsage.used,"+tarprefix_3+".Mule.heap.HeapMemoryUsage.init)",  // enter your graphite barebone target expression here
                                 "description": "",  // enter your metric description here
                                 "renderer": "gauge",
                                 "size": 100, //currently for gauge only
@@ -261,7 +261,8 @@ var dashboards =
                                 "size": 100, //currently for gauge only
                                 "Formatter":"MGTP",
                                 "valueName":"physical memory",
-                                "valueUom" :""
+                                "valueUom" :"",
+				//"threshold":{"value":1024*512,"factor":"lt"}
                             },
                             {
                                 "alias": "Network Traffic (avg)", // display name for this metric
@@ -341,7 +342,7 @@ var dashboards =
                     "valueName":"",
                     "valueUom":"",
                     "Formatter":"MGTP",
-                    "threshold":{value:1024*512,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                    //"threshold":{value:1024*512,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
                 },
                 {
@@ -441,7 +442,7 @@ var dashboards =
                     "valueName":"",
                     "valueUom":"",
                     "Formatter":"MGTP",
-                    "threshold":{value:1024*1024*3,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
+                    //"threshold":{value:1024*512,factor:"lt"} //factor lt = less than or equal to, gt = greater than or equal to
 
                 },
                 {
@@ -610,23 +611,28 @@ var dashboards =
 
                     {
                         "alias": "Top 5 Queue Throughput",  // display name for this metric
-                        "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.DequeueCount,5)",
-                        "description": "Total Dequeued Messages", // enter your metric description here
+                        "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.*.*.*.*.*.*.*.DequeueCount,5)",
+                        "description": "*Total Dequeued Messages", // enter your metric description here
                         "renderer": "box",
-                        "height" : 200,
-                        "colspan" : 1,
-                        "Formatter" : "rKMBT"
+                        "height" : 150,
+                        "colspan" : 3,
+                        "Formatter" : "rKMBT",
+                        //if tarprefix1 exists, first element must be it
+                        "BoxNameModifier":[tarprefix1,".ActiveMQ.queues.","panviva.dev.supportpoin.t",".DequeueCount"]
+
 
                     },
                     {
                         "alias": "Top 5 Pending Queues",  // display name for this metric
-                        "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.QueueSize,5)",
-                        "description": "Current Queue Depths", // enter your metric description here
+                        "target": "highestMax("+tarprefix1+".ActiveMQ.queues.*.*.*.*.*.*.*.*.QueueSize,5)",
+                        "description": "*Current Queue Depths", // enter your metric description here
                         "renderer": "box",
-                        "height" : 200,
+                        "height" : 150,
                         "overridePeriod":"2", //string value in minutes, 2min is best for current value
-                        "colspan" : 2,
-                        "Formatter" : "rKMBT"
+                        "colspan" : 3,
+                        "Formatter" : "rKMBT",
+                        "BoxNameModifier":[tarprefix1,".ActiveMQ.queues.","panviva.dev.supportpoin.t",".QueueSize"]
+
 
                     },
 
@@ -797,7 +803,7 @@ var dashboards =
             "metrics": [
                 {
                     "alias": "Login Activity",
-                    "target": "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
+                    "target": "derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.security.login.request.1.DequeueCount)",
                     "description": "Login requests received by supportpoint over given time frame.",
                     "interpolation": "cardinal",  // you can use different rickshaw interpolation values
                     "stroke_width": 1 , // change stroke width
@@ -819,22 +825,22 @@ var dashboards =
 //                },
                 {
                     "alias": "Rate",
-                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale(summarize(derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.security.login.request.1.DequeueCount),'4w','sum'),"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
                     "valueName":"Login requests received:",
                     "valueUom":"/minute",
                     "Formatter":"KMBT",
-                    "threshold":{value:20,factor:"no"} //factor lt = less than or equal to, gt = greater than or equal to
+ 		    "threshold":{value:20,factor:"no"}
 
                 },
 
                 {
-                    "alias": "Document Retrieval Activity",
-                    "target" : "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
+                    "alias": "Document Search Activity",
+                    "target" : "derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.search.searchdocuments.request.1.DequeueCount)",
                     "renderer": "line",
-                    "description": "Document retrieval requests received by supportpoint over given time frame",
+                    "description": "Document search requests received by supportpoint over given time frame",
                     "interpolation": "cardinal",
                     "colspan": 2.5,
                     "yFormatterName":"KMBT",
@@ -842,7 +848,7 @@ var dashboards =
                 },
                 {
                     "alias": "Rate",
-                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale(summarize(derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.search.searchdocuments.request.1.DequeueCount),'4w','sum'),"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
@@ -853,26 +859,26 @@ var dashboards =
 
                 },
                 {
-                    "alias": "Search Activity",
+                    "alias": "Get Document Activity",
                     "target":
-                        "derivative("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount)",
+                        "derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.documentlifecycle.getdocument.request.1.DequeueCount)",
 
                     "renderer": "line",
-                    "description": "Keyword search requests received by supportpoint over give time frame",
+                    "description": "Get document requests received by supportpoint over give time frame",
                     "interpolation": "cardinal",
                     "height" : 200,
                     "colspan": 2.5
                 },
                 {
                     "alias": "Rate",
-                    "target": "scale("+tarprefix1+".ActiveMQ.queues.foo1.DequeueCount,"+timeframe+")",
+                    "target": "scale(summarize(derivative("+tarprefix1+".ActiveMQ.queues.panviva.dev.supportpoint.public.documentlifecycle.getdocument.request.1.DequeueCount),'4w','sum'),"+timeframe+")",
                     "size" : 205,
                     "renderer":"tbox",
                     "colspan" : 0.5,
-                    "valueName":"Keyword search requests received:",
+                    "valueName":"Get document requests received:",
                     "valueUom":"/minute",
                     "Formatter":"KMBT",
-                    "threshold":{value:20,factor:"no"} //factor lt = less than or equal to, gt = greater than or equal to
+                    "threshold":{value:1024*1024,factor:"no"}
 
                 }
             ]

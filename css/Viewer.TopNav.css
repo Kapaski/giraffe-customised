@@ -1,0 +1,133 @@
+﻿/* Body */
+/* Headers 1 */
+/* General Header */
+/* Secondary Window */
+/* Tasks */
+/* Document */
+/* Headers 2 */
+/* General */
+/* Form */
+/* Modals */
+/* Document */
+/* Headers 4 */
+/* General */
+/* Headers 5 */
+/* General */
+/* Error */
+/* Popovers/Sliders/Boxes */
+/* Forms Textfields */
+/* Paragraph */
+/* Links */
+/* Find highlight*/
+/* Switch */
+/* Tables */
+/* Lists */
+/* Tabs and Contents */
+/* Secondary Window */
+/* Navigation */
+/* Review and Approve */
+#top_bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#login_logo_inside {
+  margin: 4px 0 0 5px;
+  height: 20px;
+  background-image: url(/Images/Logos/sp_logo_header.png);
+  background-repeat: no-repeat;
+}
+/* Top navigation*/
+nav#top_nav1 {
+  position: fixed;
+  top: 25px;
+  padding-left: 2px;
+  height: 36px;
+  width: 100%;
+  z-index: 50;
+  background: #6f8298;
+  border-top: 7px solid #01377f;
+  border-bottom: 1px solid #b5c2cf;
+  color: #b5c2cf;
+}
+nav#top_nav1 ul li {
+  font-family: svgfont_1regular;
+  width: 35px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+  float: left;
+  list-style: none;
+  text-align: center;
+  font-size: 1.80em;
+}
+nav#top_nav1 li:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+nav#top_nav1 ul.leftTopNav {
+  font-family: svgfont_1regular;
+  float: left;
+  margin-left: 5px;
+  max-width: 250px;
+}
+nav#top_nav1 ul.leftTopNav li {
+  font-family: svgfont_1regular;
+  padding-top: 14px;
+  padding-bottom: 5px;
+  list-style: none;
+  text-align: center;
+  font-size: 1.80em;
+  color: #b5c2cf;
+}
+nav#top_nav1 ul.leftTopNav li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+nav#top_nav1 ul.rightTopNav {
+  float: right;
+  right: 1px;
+  width: 35px;
+}
+nav#top_nav1 ul.rightTopNav li {
+  font-family: 'svgfont_1regular';
+  width: 35px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  font-size: 1.80em;
+  color: #b5c2cf;
+}
+nav#top_nav1 ul.rightTopNav li :hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* Top navigation buttons */
+.navButton {
+  color: #b5c2cf;
+  font-size: .9em;
+  margin-top: -8px;
+}
+nav#top_nav ul.rightTopNav li:hover,
+nav#top_nav ul.leftTopNav li:hover {
+  color: #ffffff;
+}
+nav#top_nav1 ul.leftTopNav li:hover {
+  color: #ffffff;
+}
+#icon_csh {
+  display: none;
+}
+/* For TabIndex Purposal */
+#more_menu a {
+  color: #b5c2cf;
+}
+#more_menu a:hover,
+#more_menu a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.enabledTopNavButton {
+  color: #8b9aa9 !important;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <script type="text/javascript" src="components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="components/lodash/dist/lodash.min.js"></script>
+    <link rel="stylesheet" href="js/Viewer.Core.min.css"/>
+    <style>
+        body {
+            font-size: 8px;
+            font: san-serif;
+            text-align: center;
+        }
+        
+        .grid .tick {
+            stroke: lightgrey;
+            opacity: 0.7;
+        }
+
+        .grid path {
+            stroke-width: 0;
+        }
+        
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 1.5;
+        }
+        .plot {
+            fill: rgba(250, 250, 255, 0.6);
+        }
+        .focus circle {
+            fill: none;
+            stroke: steelblue;
+        }
+        .overlay {
+            fill: none;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<body>
+<div id="vis">
+
+</div>
+<script type="text/javascript">
+    var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    var w = 960 - margin.left - margin.right;
+    var h = 500 - margin.top - margin.bottom;
+
+    //d3 data process is async, so need wrap whole thing in here for demo purpose
+    d3.json("OverPeriodValues_Demo.json", function (json) {
+        var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse
+        var parseInt = d3.format("%f")
+
+        json.forEach(function (d, i) {
+            d.datetime = parseDate(d.datetime)
+        });
+
+        var x = d3.time.scale()
+                .range([0, w]);
+
+        var y = d3.scale.linear()
+                .range([h, 0]);
+
+        x.domain(d3.extent(json, function (d) {
+                        return d.datetime;
+                })
+        );
+
+        y.domain([
+            d3.min(json, function (d) {
+                return d.value
+            }),
+            d3.max(json, function (d) {
+                return d.value
+            })
+        ]);
+
+        //base canvas
+        var svg = d3.select("#vis").append("svg")
+                .attr("width", w + margin.left + margin.right)
+                .attr("height", h + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        //diagram background
+        svg.append("rect")
+                .attr("width", w)
+                .attr("height", h)
+                .attr("class", "plot");
+
+        var make_x_axis = function () {
+            return d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom")
+        };
+
+        var make_y_axis = function () {
+            return d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+        };
+
+        //x axis generator
+        var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom")
+                .tickFormat(d3.time.format("%H:%M"))
+                .ticks(15)
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + h + ")")
+                .call(xAxis);
+                
+        //y axis generator
+        var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .ticks(20);
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .text("Panviva Logins");
+
+        svg.append("g")
+                .attr("class","x grid")
+                .attr("transform", "translate(0,"+h+")")
+                .call(
+                        make_x_axis()
+                        .tickSize(-h, 0, 0)
+                        .tickFormat("")
+                );
+
+        svg.append("g")
+                .attr("class", "y grid")
+                .call(
+                        make_y_axis()
+                        .tickSize(-w, 0, 0)
+                        .tickFormat("")
+                );
+
+
+        // Add the line by appending an svg:path element with the data line we created above
+        // do this AFTER the axes above so that the line is above the tick-lines
+        var focus = svg.append("g")
+                .attr("class", "focus");
+  
+        d3.select(".focus").append("rect")
+                .attr("class", "overlay")
+                .attr("width", w)
+                .attr("height", h);
+                
+        interval = 300;
+        counter = 0;
+        var myVar = setInterval(
+          function(){
+                if (counter >= json.length) {
+                  clearInterval(myVar);
+                }
+                chart(json, counter);
+                counter += 1;
+              }, interval
+        );
+        
+         var chart = function(data, counter) {
+                // console.log(JSON.stringify(data[counter].value));
+                
+                var group = focus.selectAll(".group")
+                        .data(data, function (d) { return data[counter]; });
+                
+                var groupEnter = group.enter().append('g')
+                        .attr('class', 'group');
+
+                var groupUpdate = group.transition().duration(interval).ease('linear');
+
+                // var groupExit = d3.transition(group.exit())
+                        // .remove();
+                
+                groupEnter.append("circle")
+                        .attr("cx", x(data[counter].datetime))
+                        .attr("cy", y(data[counter].value))
+                        .attr("r", 10)
+                        .style("fill", "#ff7f0e");
+               
+                groupUpdate.select('circle')
+                        .attr("cx", x(data[counter].datetime))
+                        .attr("cy", y(data[counter].value))
+                        .attr("r",  10);
+                        
+                focus.selectAll(".group").append("circle")
+                        .attr("cx", data[counter - 1] ? x(data[counter - 1].datetime) : 0)
+                        .attr("cy", data[counter - 1] ? y(data[counter - 1].value) : h)
+                        .attr("r", 5)
+                        .style("fill", "#ff7f0e");   
+                        
+                svg.append("line")
+                        .attr("x1", data[counter - 1] ? x(data[counter].datetime) : 0)
+                        .attr("y1", data[counter - 1] ? h : 0)
+                        .attr("x2", data[counter - 1] ? x(data[counter].datetime) : 0)
+                        .attr("y2", data[counter - 1] ? y(data[counter].value) : 0)
+                        .attr("stroke-width", 1)
+                        .attr("stroke", "black");
+        };
+  });
+
+</script>
+</body>
+</html>

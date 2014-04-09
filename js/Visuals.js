@@ -1015,21 +1015,36 @@ Visuals.Graph.Renderer.TBox = Visuals.Class.create( Visuals.Graph.Renderer, {
         var formatter = this._switchFormatter(formatterName)
         series.forEach(function(d){
                 var curValue,
-                    curTime
+                    curTime;
+
+		_.each(d.data,function(s){
+		     if(s.x===0) {
+		     	curValue = s.y
+			
+		     }
+		})
+		
+	//console.log("not get curV? ",!curValue?curValue:curValue)
+	if(!curValue) {
+		
                 for(var k = (d.data.length-1); k>=0; k--) {
+	          
                     curValue = d.data[k].y
                     if(curValue!=null){
                         curTime = d.data[k].x;
 
                         break;
                     }
+                   
                 }
-
-                if(formatter===undefined) {
+          //	console.log("seek valid curValue backwards")
+        }
+		if(formatter===undefined) {
                     formatter = d3.format(".8r")
                 }
                 rawValue = curValue
                 curValue = formatter(curValue)
+		
                 var name = this.params.valueName || "";
                 var uom = this.params.valueUom || ""
                 var curObj = {
@@ -1144,15 +1159,12 @@ Visuals.Graph.Renderer.Box = Visuals.Class.create( Visuals.Graph.Renderer, {
 
         m = formatter(m)
 
-        var names= d.name.split(".")
-        var i = names.length-1<0?0:(names.length-1)
+        var name= d.name
+        _.each(this.params.BoxNameModifier,function(n){
+            name = name.replace(n,'')
+        })
 
-        var name1 = names[i-1]
-        var name2 = names[i]
-
-        var name = (name1!=null && name1!="*"? name1.split(")").join("").split(",")[0]+".":"")
-            +(name2!=null? name2.split(")").join("").split(",")[0]:"Read")
-
+ 	//console.log("display name: ",name)
         var curObj = {
 
             name: name,
